@@ -1,0 +1,10 @@
+# grow.jaja — crecimiento ilimitado, no terminante.
+# La regla reemplaza el "1" más a la izquierda por dos: el base gana un
+# símbolo por paso. Crecimiento LINEAL, no exponencial -- la reescritura
+# leftmost aplica una sola regla por paso, así que 200 pasos dan 201 unos
+# (medido). Lo que demuestra no es la velocidad sino que la memoria no
+# tiene cota: condición necesaria para Turing completitud.
+# IMPORTANTE: este programa NO termina por diseño. Produce MAX_STEPS.
+1::=11
+::=
+1

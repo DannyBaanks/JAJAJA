@@ -1,0 +1,6 @@
+# loop.jaja — sin terminacion: la risa crece indefinidamente.
+# Se usa para demostrar el limite MAX_STEPS, no es un bug.
+jaja::=jajajaja
+jajajaja::=jaja jajajaja
+::=
+jaja

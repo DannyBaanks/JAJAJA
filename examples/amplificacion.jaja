@@ -1,0 +1,6 @@
+# amplificacion.jaja — la risa de 2 se amplifica a 3 antes de emitirse.
+jajaja::=~jajaja! 
+jaja::=jajaja
+j::=~
+::=
+jaja j

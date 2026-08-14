@@ -1,0 +1,5 @@
+# eco.jaja — cada risa larga se repite dos veces en output.
+jajaja::=~jajaja jajaja
+j::=~
+::=
+jajaja j

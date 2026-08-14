@@ -1,0 +1,8 @@
+# simple_counter.jaja — single counter that increments forever
+# Demonstrates unbounded growth with simple counter increment
+#
+# Counter is the number of 'I' symbols. Rule adds one I per step.
+# q is the state (always present).
+Q0::=Q0 I
+::=
+Q0

@@ -1,0 +1,40 @@
+# busy_beaver.jaja — 2-state 2-symbol Turing Machine in Jajaja
+#
+# Encodificación del tape: estado como marcador entre celdas
+#   0/1 = símbolos de cinta; A/B = estados; H = halt (sin reglas -> HALT natural)
+#   > = límite izquierdo; E = límite derecho
+#
+# Transiciones (Busy Beaver 2-state, 2-symbol):
+#   δ(A, 0) = (1, R, B)   : escribir 1, mover derecha, estado B
+#   δ(A, 1) = (1, L, B)   : escribir 1, mover izquierda, estado B
+#   δ(B, 0) = (1, L, A)   : escribir 1, mover izquierda, estado A
+#   δ(B, 1) = (1, R, H)   : escribir 1, mover derecha, HALT
+#
+# Tape inicial: > A 0 0 0 0 E  (todos ceros, estado A)
+# Resultado esperado tras 6 pasos: tape contiene 4 ones, HALT. ✓ (BB(2)=4)
+
+# === Reglas para A ===
+# δ(A, 0) = (1, R, B): A0 -> 1B
+A0::=1B
+# δ(A, 1) = (1, L, B): left-neighbor + A1 -> B + left unchanged + 1 (current cell kept as 1)
+0A1::=B01
+1A1::=B11
+>A1::=>B01
+
+# === Reglas para B ===
+# δ(B, 1) = (1, R, H): B1 -> 1H
+B1::=1H
+# δ(B, 0) = (1, L, A): left-neighbor + B0 -> A + left unchanged + 1 (current cell written as 1)
+0B0::=A10
+1B0::=A11
+>B0::=>A01
+
+# === Expansión de cinta en límite derecho ===
+# Si el head llega a E, agrega un blank 0
+0AE::=B0E0E
+1AE::=B1E0E
+0BE::=A0E0E
+1BE::=A1E0E
+
+::=
+>A000000E

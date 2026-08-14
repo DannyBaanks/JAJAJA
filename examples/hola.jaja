@@ -1,0 +1,6 @@
+# hola.jaja — primer programa Jajaja
+# Emite "Hello, world!" seguido de newline.
+jaja::=~Hello, world!
+j::=~
+::=
+jaja j

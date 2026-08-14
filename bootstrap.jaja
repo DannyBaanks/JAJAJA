@@ -1,0 +1,5 @@
+# Jajaja bootstrap: 3-risas emite "JAJAJA-OK", luego 1-risa emite newline.
+jajaja::=~JAJAJA-OK
+j::=~
+::=
+jajaja j
