@@ -1,0 +1,9 @@
+# Por defecto, normalizar finales de linea en el repositorio.
+* text=auto eol=lf
+
+# EXCEPCION deliberada: este fixture existe PORQUE tiene CRLF. Es la
+# regresion del bug de parseo con \r\n (test 8). Sin `-text`, git normaliza
+# sus finales de linea al commitear y en un clone limpio el archivo llega
+# con LF: el test seguiria en verde sin probar absolutamente nada.
+# Verificado: sin esta linea el blob quedaba con 0 CRLF.
+examples/bootstrap_crlf.jaja -text
