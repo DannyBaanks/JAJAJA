@@ -1,0 +1,6 @@
+# hola_mundo.jaja — el primer programa, en el idioma del lenguaje.
+# La risa de dos emite el saludo; la de uno emite el salto de linea.
+jaja::=~¡Hola, mundo!
+j::=~
+::=
+jaja j

@@ -1,0 +1,114 @@
+'''JAJAJA''' is an [[esoteric programming language]] created by [[User:DannyBaanks]] in 2026, based on deterministic [[string]] [[rewriting]]. Its semantic alphabet consists of repetitions of the token <code>ja</code> — the Spanish spelling of a laugh — and the number of contiguous laughs ''is'' the identity of the symbol. A JAJAJA program therefore reads as laughter to a Spanish speaker while remaining a formal rewriting system.
+
+The language is a deterministic relative of [[Thue]], whose surface syntax it borrows.
+
+==Relationship to Thue==
+
+JAJAJA uses Thue's program format and its output notation, but not its evaluation strategy. Thue is [[nondeterministic]]: at each step ''any'' applicable rule may be applied at ''any'' matching position. JAJAJA instead scans the rules in source order, applies the first rule whose left-hand side occurs in the state, and applies it at the leftmost occurrence.
+
+An ordered rule list, first-applicable selection, leftmost matching and "halt when nothing applies" is precisely a [[wikipedia:Markov algorithm|Markov normal algorithm]] rather than a semi-Thue system. This is a different model of computation, not a weaker one: Markov algorithms are Turing complete.
+
+JAJAJA also has no input facility. Thue's <code>::=:::</code> input rule does not exist.
+
+==Language description==
+
+A program consists of a list of rules of the form
+
+ ''<left-hand side>''::=''<right-hand side>''
+
+terminated by a line containing only <code>::=</code> (surrounding whitespace is tolerated), followed by a single line holding the initial state, called the ''base'':
+
+ jajaja::=~JAJAJA-OK
+ j::=~
+ ::=
+ jajaja j
+
+Only the first non-blank, non-comment line after the separator becomes the base; any further lines are silently ignored. Unlike Thue, the base cannot span multiple lines.
+
+A line whose first character is <code>#</code> is a comment. This is tested on the raw line, so an ''indented'' <code>#</code> is a syntax error rather than a comment while rules are being read. After the separator the test is applied to the trimmed line instead, so indented comments and blank lines are skipped there. A line in rule position that contains no <code>::=</code> is a syntax error.
+
+Whitespace inside a rule is significant: it is part of the left- or right-hand side. Only the first <code>::=</code> on a line separates the two sides, so later occurrences belong to the right-hand side.
+
+==Semantics==
+
+Execution repeats the following step:
+
+# Scan the rules in the order they were written.
+# Take the first rule whose left-hand side occurs in the base, at its leftmost occurrence. Rules with an empty left-hand side are skipped.
+# If the right-hand side begins with <code>~</code>, output the rest of it and delete the match from the base. A bare <code>~</code> outputs a newline.
+# Otherwise, replace the match with the right-hand side.
+
+The program halts when no rule applies. Since rewriting need not terminate, implementations impose a step budget.
+
+Because selection is by rule order rather than by match length, '''the order in which rules are written is semantic'''. Longer laughs must be listed before shorter ones that are their prefixes, otherwise the shorter rule rewrites inside its own result and the program never terminates:
+
+ jajaja::=~TRES
+ jaja::=jajaja
+ ::=
+ jaja
+
+outputs <code>TRES</code> and halts in two steps, whereas swapping the two rules loops forever, because <code>jaja</code> keeps matching inside the <code>jajaja</code> it just produced.
+
+==Examples==
+
+===¡Hola, mundo!===
+
+The language is Spanish, and so is its first program:
+
+ # hola_mundo.jaja
+ jaja::=~¡Hola, mundo!
+ j::=~
+ ::=
+ jaja j
+
+The two-laugh token emits the greeting and is deleted; the remaining single laugh emits a newline. Halts in two steps.
+
+===Hello, world!===
+
+The same program with an English greeting, since the source is laughter either way:
+
+ # hola.jaja
+ jaja::=~Hello, world!
+ j::=~
+ ::=
+ jaja j
+
+===Amplifying a laugh===
+
+A two-laugh token is amplified to three before being emitted:
+
+ jajaja::=~jajaja!
+ jaja::=jajaja
+ ::=
+ jaja
+
+The base is first rewritten to <code>jajaja</code>, which the first rule then emits, leaving nothing to match. Outputs <code>jajaja!</code> in two steps. Note the rule order, per the previous section.
+
+===Echo===
+
+ jajaja::=~jajaja jajaja
+ j::=~
+ ::=
+ jajaja j
+
+Outputs <code>jajaja jajaja</code> followed by a newline.
+
+==Computational class==
+
+JAJAJA is [[Turing complete]]. The reference implementation ships a uniform compiler from an arbitrary single-tape Turing machine to a JAJAJA program, together with a differential test that runs seven machines against a reference simulator and compares the resulting tapes. The translation is uniform — it takes a machine as data — so the tests verify the translation rather than standing in for the claim. As usual for such arguments, the result assumes an unbounded tape; any real run is bounded by the interpreter's step budget.
+
+A caveat worth stating, because it is easy to get wrong: the ''pure laugh alphabet'' is Turing complete '''only with a delimiter'''. Unary encoding without one is ambiguous, since <code>jaja</code> is a substring of <code>jajaja</code>, and rules then match inside each other's symbols. The space in <code>jaja j</code> — present in every example — is structural, not cosmetic. With a delimiter the ambiguity disappears.
+
+The engine itself accepts arbitrary tokens: <code>Hola::=mundo</code> is a valid, executable rule. Restricting programs to laughs is a stylistic convention of the language rather than a restriction enforced by the interpreter, which makes the completeness argument easier, not harder.
+
+==Implementations==
+
+* [https://github.com/DannyBaanks/ISyCo Reference interpreter in Python], with the specification and the Turing-completeness proof.
+* JavaScript implementation running in the browser at [https://github.com/none-None1/Interpret-Esolangs-Online Interpret Esolangs Online], ported from the reference interpreter and verified against it on a shared conformance corpus.
+
+[[Category:Languages]]
+[[Category:String-rewriting paradigm]]
+[[Category:Turing complete]]
+[[Category:Implemented]]
+[[Category:Pseudonatural]]
+[[Category:2026]]
