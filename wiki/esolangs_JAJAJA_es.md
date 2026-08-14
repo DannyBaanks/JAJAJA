@@ -177,7 +177,7 @@ de completitud más fácil, no más difícil.
 
 ## Implementaciones
 
-- [Intérprete de referencia en Python](https://github.com/DannyBaanks/ISyCo),
+- [Intérprete de referencia en Python](https://github.com/DannyBaanks/JAJAJA),
   con la especificación y la prueba de Turing completitud.
 - Implementación en JavaScript que corre en el navegador dentro de
   [Interpret Esolangs Online](https://github.com/none-None1/Interpret-Esolangs-Online),

@@ -103,7 +103,7 @@ The engine itself accepts arbitrary tokens: <code>Hola::=mundo</code> is a valid
 
 ==Implementations==
 
-* [https://github.com/DannyBaanks/ISyCo Reference interpreter in Python], with the specification and the Turing-completeness proof.
+* [https://github.com/DannyBaanks/JAJAJA Reference interpreter in Python], with the specification and the Turing-completeness proof.
 * JavaScript implementation running in the browser at [https://github.com/none-None1/Interpret-Esolangs-Online Interpret Esolangs Online], ported from the reference interpreter and verified against it on a shared conformance corpus.
 
 [[Category:Languages]]
