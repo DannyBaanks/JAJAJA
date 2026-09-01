@@ -1,0 +1,22 @@
+# kv_store.jaja - stateful key-value operations via host effects
+# Input: "SET foo bar" or "GET foo"
+# Convention: rules route commands, emit EFFECT lines for host to execute.
+# Host injects RESULT back into base, JAJAJA processes it.
+
+# Route SET commands: "SET key value" -> emit EFFECT kv-set
+SET::=~EFFECT_SET
+
+# Route GET commands: "GET key" -> emit EFFECT kv-get
+GET::=~EFFECT_GET
+
+# Process RESULT from kv-set: "RESULT 0 OK" -> emit "SET OK"
+RESULT_OK::=~SET_OK
+RESULT_NOT_FOUND::=~NOT_FOUND
+
+# Cleanup markers
+EFFECT_SET::=_
+EFFECT_GET::=_
+RESULT_OK::=_
+RESULT_NOT_FOUND::=_
+
+::=

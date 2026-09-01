@@ -1,7 +1,7 @@
 r"""Jajaja interpreter (rewriting system over the laugh alphabet).
 
-Jajaja es un esolang mexicano basado en Thue. La idea: el alfabeto
-semantico son repeticiones del token "ja".
+Jajaja es un esolang mexicano basado en Markov normal algorithm.
+La idea: el alfabeto semantico son repeticiones del token "ja".
 
     "ja"     = 1 risa        (token unidad)
     "jaja"   = 2 risas
@@ -9,12 +9,15 @@ semantico son repeticiones del token "ja".
     ... y asi. La "longevidad" de la risa (conteo de `ja`s) forma cada
     "palabra" del programa.
 
-State model:
-    base :: str                  (la cinta de reescritura; risa acumulada)
-    rules :: list[(lhs, rhs)]    (reglas lhs ::= rhs)
-    output :: list[str]          (emisiones recogidas)
+State model (JajajaMachineState):
+    rules       :: list[(lhs, rhs)]    reglas lhs ::= rhs
+    base        :: str                 cinta de reescritura
+    output      :: list[str]           emisiones recogidas
+    steps       :: int                 pasos ejecutados
+    status      :: str                 RUNNING | HALTED | MAX_STEPS
+    trace_log   :: list[dict] | None   snapshots opcionales
 
-Rule model:
+Step:
     En cada paso recorremos las reglas en orden. La PRIMERA regla cuyo lhs
     aparece en base se aplica en su primera ocurrencia (leftmost).
     - Si rhs comienza con `~`, el resto del rhs se emite como texto y se
@@ -22,11 +25,29 @@ Rule model:
     - Si rhs no comienza con `~`, se reemplaza el match lhs por rhs en base.
     Si ninguna regla matchea -> HALT.
 
-Termination behavior:
-    HALTED: ningun lhs matchea en base.
-    MAX_STEPS: presupuesto agotado (la risa puede no terminar).
+    S_n+1 = step(S_n):
+      for (lhs, rhs) in rules:
+        if lhs == "": continue
+        idx = base.find(lhs)
+        if idx >= 0:
+          if rhs starts with "~":
+            output += [tail or "\n"]
+            base = base[:idx] + base[idx+len(lhs):]
+          else:
+            base = base[:idx] + rhs + base[idx+len(lhs):]
+          steps += 1
+          record trace if enabled
+          return True
+      status = HALTED
+      return False
 
-Output: texto emitido via reglas `::~...`.
+Input:
+    stdin_data se inyecta como prefijo delimitado de la base.
+    La misma imagen SHA256 del .jaja + diferentes inputs = diferentes resultados.
+    COMPILE_ONCE_TEST_MANY: las reglas JAJAJA procesan el input directamente.
+
+Output:
+    Texto emitido via reglas `::~...`.
 
 Source format (identico a Thue):
 
@@ -37,32 +58,52 @@ Source format (identico a Thue):
     ::=
     <base inicial>
 
-Convencion de Jajaja: lhs y rhs son tipicamente secuencias de `ja` contiguas
-separadas por espacios (palabras).
-
-    jajaja::=~JAJAJA-OK    # 3-risas emite "JAJAJA-OK"
-    jaja::=jajaja          # 2-risas -> 3-risas (amplifica risa)
-    j::=~                  # 1-risa silenciosa emite newline
-    ::=
-    jajaja j               # base: 3-risas seguidas de 1-risa
-
-El motor es fiel a la semantica de reescritura; no convierte Thue en maquina
-de registros. La diversidad semantica (reescritura no determinista) vive
-aqui igual que en Thue.
+Trace invariant:
+    run(trace=False) produces identical (output, steps, status)
+    as run(trace=True). The trace log is a side-channel only.
 """
 from __future__ import annotations
+
+from dataclasses import dataclass, field
 
 
 class JajajaError(Exception):
     pass
 
 
+@dataclass
+class StateSnapshot:
+    """Captura completa del estado en un instante dado."""
+    step: int
+    base: str
+    output: list[str]
+    status: str
+
+
 class Jajaja:
-    def __init__(self, source: str):
+    """Motor de reescritura Markov para JAJAJA.
+
+    Invariante: step() no cambia output si status != RUNNING.
+    Trace invariante: trace_disabled output == trace_enabled output.
+    """
+
+    def __init__(self, source: str, *, trace: bool = False):
         self.rules: list[tuple[str, str]] = []
         self.base = ""
         self.output: list[str] = []
+        self.steps = 0
+        self.status = "RUNNING"
+        self._trace_enabled = trace
+        self._trace_log: list[StateSnapshot] = [] if trace else []
         self._parse(source)
+
+    def _snapshot(self) -> StateSnapshot:
+        return StateSnapshot(
+            step=self.steps,
+            base=self.base,
+            output=list(self.output),
+            status=self.status,
+        )
 
     def _parse(self, source: str) -> None:
         lines = source.splitlines()
@@ -84,19 +125,15 @@ class Jajaja:
                 lhs, rhs = ln.split("::=", 1)
                 self.rules.append((lhs, rhs))
             elif mode == "base":
-                # La base es la primera linea NO-VACIA y no-comentario tras el
-                # separador, igual que la spec §3 declara. Antes se tomaba la
-                # primera linea a secas: una linea en blanco o un comentario
-                # despues de `::=` se volvia la base, el programa arrancaba con
-                # una cinta vacia y terminaba en HALT sin emitir nada ni
-                # reportar error. Fallaba en silencio, que es la peor forma de
-                # fallar en un lenguaje de juguete.
                 if ln.strip() == "" or ln.strip().startswith("#"):
                     continue
                 self.base = ln
                 break
 
     def step(self) -> bool:
+        """Aplica un paso de reescritura. Retorna True si se aplicó, False si HALT."""
+        if self.status != "RUNNING":
+            return False
         for lhs, rhs in self.rules:
             if lhs == "":
                 continue
@@ -108,20 +145,41 @@ class Jajaja:
                     self.base = self.base[:idx] + self.base[idx + len(lhs):]
                 else:
                     self.base = self.base[:idx] + rhs + self.base[idx + len(lhs):]
+                self.steps += 1
+                if self._trace_enabled:
+                    self._trace_log.append(self._snapshot())
                 return True
+        self.status = "HALTED"
         return False
 
     def run(self, max_steps: int = 200000, stdin_data: str = "") -> tuple[str, int, str]:
+        """Ejecuta el programa. stdin_data se inyecta como prefijo de la base.
+
+        COMPILE_ONCE_TEST_MANY: la misma fuente + diferentes inputs = diferentes
+        resultados, porque las reglas JAJAJA procesan el input directamente.
+        """
         self.output = []
-        steps = 0
-        while steps < max_steps:
+        self.steps = 0
+        self.status = "RUNNING"
+        if stdin_data:
+            self.base = stdin_data + " " + self.base
+        if self._trace_enabled:
+            self._trace_log.append(self._snapshot())
+        while self.steps < max_steps:
             if not self.step():
-                return "".join(self.output), steps, "HALTED"
-            steps += 1
-        return "".join(self.output), steps, "MAX_STEPS"
+                break
+        if self.status == "RUNNING":
+            self.status = "MAX_STEPS"
+        return "".join(self.output), self.steps, self.status
+
+    @property
+    def trace(self) -> list[StateSnapshot]:
+        """Log de snapshots (solo si trace=True en constructor)."""
+        return list(self._trace_log)
 
 
 def run(source: str, max_steps: int = 200000, stdin_data: str = "") -> tuple[str, int, str]:
+    """Funcion wrapper con manejo de errores de sintaxis."""
     try:
         return Jajaja(source).run(max_steps=max_steps, stdin_data=stdin_data)
     except JajajaError as e:

@@ -1,0 +1,6 @@
+# command.jaja - COMPILE_ONCE_TEST_MANY demo
+# Same file, different runtime inputs, different outputs.
+# Convention: input is prepended to base; empty base = input only.
+bye::=~BYE
+hello::=~HELLO
+::=

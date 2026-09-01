@@ -1,0 +1,7 @@
+# chain.jaja - chain of in-base transformations
+a::=b
+b::=c
+c::=RESULT
+OUT::=~DONE
+::=
+a OUT

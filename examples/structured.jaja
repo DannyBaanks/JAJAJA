@@ -1,0 +1,7 @@
+# structured.jaja - compute in base, emit at end
+# Convention: rules transform in-place (no ~), final rule emits
+hello::=world
+world::=EARTH
+DONE::=~COMPUTED
+::=
+hello DONE

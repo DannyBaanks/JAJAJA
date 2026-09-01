@@ -1,0 +1,30 @@
+# mini_webapp.jaja - routes requests to different handlers
+# Input: "GET /" or "GET /product/1" or "POST /cart"
+# Convention: rules pattern-match on request, emit structured response.
+
+# Route: root page
+GET /::=~HOME_PAGE
+
+# Route: product detail
+GET /product/::=~PRODUCT_PAGE
+
+# Route: cart operations
+POST /cart::=~CART_PAGE
+
+# Route: unknown
+GET::=~NOT_FOUND_PAGE
+POST::=~NOT_FOUND_PAGE
+
+# Emit response bodies
+HOME_PAGE::=~HOME_HTML
+PRODUCT_PAGE::=~PRODUCT_HTML
+CART_PAGE::=~CART_HTML
+NOT_FOUND_PAGE::=~404_HTML
+
+# Cleanup markers
+HOME_HTML::=_
+PRODUCT_HTML::=_
+CART_HTML::=_
+404_HTML::=_
+
+::=

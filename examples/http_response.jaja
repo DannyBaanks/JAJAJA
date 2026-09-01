@@ -1,0 +1,21 @@
+# http_response.jaja - generates HTTP responses based on input
+# Input: "GET /hello?name=Danny"
+# Convention: rules parse request, build response, emit via EFFECT stdout.
+
+# Route: if input contains /hello, extract name and respond
+/hello::=~EFFECT_HELLO
+EFFECT_HELLO::=_
+
+# Route: other paths get 404
+GET::=~NOT_FOUND_404
+
+# Emit response headers
+RESPONSE_200::=~HTTP_1_1_200_OK
+RESPONSE_404::=~HTTP_1_1_404_Not_Found
+
+# Cleanup
+HTTP_1_1_200_OK::=_
+HTTP_1_1_404_Not_Found::=_
+NOT_FOUND_404::=_
+
+::=
