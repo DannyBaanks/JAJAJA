@@ -48,6 +48,7 @@ CAPABILITIES = {
     "fs-write":  {"handler": "fs-write",  "needs": ["fs-write"]},
     "clock":     {"handler": "clock",     "needs": []},
     "http-get":  {"handler": "http-get",  "needs": ["http"]},
+    "lolcode":   {"handler": "lolcode",   "needs": ["lolcode"]},
 }
 
 DEPENDENCY_MAP = {
@@ -104,6 +105,16 @@ def dispatch_effect(
             return "OK", handle_clock(args)
         elif cap == "http-get":
             return "OK", handle_http_get(args)
+        elif cap == "lolcode":
+            from backends.lolcode.adapter import run as lolcode_run
+            op = effect.get("op", "")
+            # The operands are whatever the JAJAJA program left in its
+            # base. This is transport: the adapter feeds them to the
+            # external LOLCODE runtime, which does the actual parsing
+            # and computation.
+            operands = state.get("base", "").strip()
+            result = lolcode_run(op, operands)
+            return "OK", result["stdout"]
         else:
             return "DENY", f"unimplemented capability {cap!r}"
     except Exception as e:
@@ -152,6 +163,11 @@ def run_host(
         # Check if any EFFECT lines were emitted
         effects_found = False
         new_output = []
+        # Expose the remaining base as effect input data. This is pure
+        # transport: handlers may read it (e.g. the lolcode adapter
+        # forwards it as the backend program's stdin) but the host
+        # never computes on it.
+        state["base"] = machine.base.strip()
         for line in machine.output:
             parsed = parse_effect(line)
             if parsed:

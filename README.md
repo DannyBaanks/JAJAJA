@@ -188,13 +188,46 @@ jajajaja::=~jajajaja!    # nunca se alcanza
 Poné antes las reglas de `lhs` más largo. La §5.3 de la spec lo documenta con
 los dos casos, y el suite fija los dos como test — incluido el anti-ejemplo.
 
+## Backend LOLCODE (demo de composición)
+
+JAJAJA puede *targetear* otros lenguajes. Demo: Python como único frontend,
+JAJAJA componiendo la petición, y **LOLCODE** (un lenguaje de bajo uso
+soportado por GitHub Linguist) como backend ejecutando la semántica con un
+runtime externo real (lci).
+
+```bash
+python demo_lolcode.py "ADD 2 3"     # 5   (SUM OF lo calcula LOLCODE)
+python demo_lolcode.py "MAX 9 4"     # 9   (BIGGR OF + O RLY? branch)
+python demo_lolcode.py "ECHO hola"   # hola (string real)
+python demo_lolcode.py "COUNT 3"     # 3 2 1 0 (loop IM IN YR)
+```
+
+**Why this backend?** Para demostrar que la arquitectura no depende de un
+backend convencional, esta demo conecta el frontend Python con *a low-usage
+language supported by GitHub Linguist*: LOLCODE (19,904 archivos `.lol`
+indexados vs ~360 millones de `.py`, medido 2026-09-03 vía GitHub Search
+API; ver `evidence/lolcode_backend/LINGUIST_AUDIT.md`). No afirmamos que sea
+"el menos usado de GitHub" — no existe ranking oficial y nuestra medición
+encontró lenguajes con menos archivos (Befunge, 228). El punto es la
+composición, no el récord.
+
+Firma de honestidad del diseño:
+
+- La regla de `route.jaja` que matchea decide qué op corre. Sin esa
+  reescritura no hay llamada al backend (prueba: `"DIV 1 2"` no emite nada).
+- Python nunca calcula el resultado: transporta y presenta.
+- Sin runtime externo instalado, el sistema **falla ruidosamente** — no hay
+  fallback secreto que calcule en Python.
+- Docs y requisitos del runtime: `backends/lolcode/README.md`.
+
 ## Tests
 
-100 tests, sin framework:
+130 tests, sin framework:
 
 ```bash
 python test_jajaja.py            # 49 tests: intérprete + examples + runtime input + trace
 python test_host.py              # 51 tests: data model + host ABI + calculator + UI IR + FS
+python test_backend_lolcode.py   # 30 tests: backend LOLCODE (e2e requiere runtime externo; sin él se omite el e2e y se prueba el fallo limpio)
 ```
 
 Cubren el intérprete, los ejemplos, CRLF, tolerancia del separador, runtime

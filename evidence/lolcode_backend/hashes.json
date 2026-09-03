@@ -1,0 +1,31 @@
+{
+  "package": "JAJAJA LOLCODE backend demo",
+  "generated": "2026-09-03",
+  "scope": "evidence/lolcode_backend artifacts and the public software deliverables they verify",
+  "files": {
+    "backends/lolcode/adapter.py": "7657e75b80cc44570533e67ca008d39b3b71c39a6f441d10790e3fc2503d1d02",
+    "backends/lolcode/route.jaja": "883dcb31d309e4cc644dc903370679b9610e3ac9c7ac150ec40af3c17fdb050f",
+    "backends/lolcode/programs/sum.lol": "603bb9260581701305f0ba9ec02fba97299c2b2d2d05b9eb18df50ba1a734b6c",
+    "backends/lolcode/programs/max.lol": "4933e81fc24653f78e49aa5be7f9a40dab54151de6c29e2690349ac2c003925f",
+    "backends/lolcode/programs/echo.lol": "bdc8b153fbdc0449147154283dc48a8de1b55e52295a9dbb0f0883f8b0f6fbaf",
+    "backends/lolcode/programs/count.lol": "0db4144f8381d179a48d700c3198b80440540ee34224892c03920ba4a48d6768",
+    "demo_lolcode.py": "090bdeaf495d29d774428d0f12be99733b0573f240eda5917106daf3256c23a1",
+    "test_backend_lolcode.py": "10cc66be9666660a1d0d2a6722c20021b2167a613e3e7d10f96c9f48a2e94717",
+    "evidence/lolcode_backend/TRANSCRIPT.txt": "a4ca9844778cfa6e39785f728f59d99fc58ba4c6040ef8c0a9c931a0f874f825"
+  },
+  "external_runtime": {
+    "name": "lci",
+    "source": "https://github.com/justinmeza/lci",
+    "version": "v1.3",
+    "commit": "0b32ed1cc52abd1971d199db9bd77c387316cae1",
+    "license": "GPL-3.0 (executed as a separate process; not distributed here)",
+    "binary_sha256": "53200eead0d8fed7bf8d05cf7c124ea1484d5c2025217fae195ebbc1e752dac6"
+  },
+  "linguist_reference": {
+    "repo": "github-linguist/linguist",
+    "branch": "main",
+    "commit_when_observed": "d5214e1612c858ba14bf98edeca57e1683276f1d",
+    "file": "lib/linguist/languages.yml",
+    "entry": "LOLCODE (language_id 192, extension .lol)"
+  }
+}

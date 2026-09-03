@@ -19,6 +19,19 @@ py ja_encoding.py      → OK
 Total: 100 tests, 0 failures
 ```
 
+Addendum 2026-09-03 — LOLCODE backend demo:
+
+```
+py test_backend_lolcode.py  → 30 passed, 0 failed (0 skipped con runtime externo)
+Página: Python frontend -> route.jaja (JAJAJA reescribe y elige op) -> host
+capability "lolcode" -> backends/lolcode (adapter de transporte) -> runtime
+LOLCODE externo lci v1.3 -> RESULT -> JAJAJA confirma -> Python imprime.
+Evidencia: evidence/lolcode_backend/ (verdicts, transcript, audit Linguist).
+Nota epistemica: LINGUIST_ABSOLUTE_LEAST_USED = NOT_DEMONSTRATED; LOLCODE es
+"low-usage Linguist-supported", no "el menos usado de GitHub". El menor
+medido en nuestra shortlist fue Befunge (228 archivos indexados).
+```
+
 ## BUGS FIXED
 
 ### BUG-1: `stdin_data` era ignorado → FIXED

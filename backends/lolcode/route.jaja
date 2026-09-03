@@ -1,0 +1,24 @@
+# route.jaja — JAJAJA compone la peticion hacia el backend LOLCODE.
+#
+# Input (via stdin_data): "ADD 2 3", "MAX 9 4", "ECHO hola", "COUNT 3"
+#
+# JAJAJA hace la composicion real: la regla que matchea decide QUE
+# operacion se ejecuta en el backend. Los operandos quedan en la base
+# y viajan como datos (stdin del programa .lol). JAJAJA jamas computa
+# el resultado: no existe regla que produzca "5" para ADD 2 3.
+
+# Routing: op -> EFFECT hacia el capability "lolcode" del host
+ADD::=~EFFECT 1 lolcode {"op":"sum"}
+MAX::=~EFFECT 1 lolcode {"op":"max"}
+ECHO::=~EFFECT 1 lolcode {"op":"echo"}
+COUNT::=~EFFECT 1 lolcode {"op":"count"}
+
+# Cleanup del token de arranque
+READY::=
+
+# Recepcion: el host inyecta RESULT en la base; JAJAJA lo confirma
+RESULT::=~jajaja:respuesta_recibida_del_backend
+
+::=
+
+READY

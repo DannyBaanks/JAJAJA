@@ -1,0 +1,99 @@
+﻿=== py demo_lolcode.py "ADD 2 3" ===
+[frontend] python request: "ADD 2 3"
+[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[jajaja]   rewrite steps=3 status=HALTED
+[jajaja]   EFFECT -> host -> backend (receipt 1)
+[jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
+[backend]  LOLCODE stdout: '5\n'
+[result]   5
+exit=0
+
+=== py demo_lolcode.py "MAX 9 4" ===
+[frontend] python request: "MAX 9 4"
+[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[jajaja]   rewrite steps=3 status=HALTED
+[jajaja]   EFFECT -> host -> backend (receipt 1)
+[jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
+[backend]  LOLCODE stdout: '9\n'
+[result]   9
+exit=0
+
+=== py demo_lolcode.py "ECHO Bolgang dice hola" ===
+[frontend] python request: "ECHO Bolgang dice hola"
+[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[jajaja]   rewrite steps=3 status=HALTED
+[jajaja]   EFFECT -> host -> backend (receipt 1)
+[jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
+[backend]  LOLCODE stdout: 'Bolgang dice hola\n'
+[result]   Bolgang dice hola
+exit=0
+
+=== py demo_lolcode.py "COUNT 3" ===
+[frontend] python request: "COUNT 3"
+[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[jajaja]   rewrite steps=3 status=HALTED
+[jajaja]   EFFECT -> host -> backend (receipt 1)
+[jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
+[backend]  LOLCODE stdout: '3\n2\n1\n0\n'
+[result]   3
+2
+1
+0
+exit=0
+
+=== py demo_lolcode.py "DIV 1 2" (negativo: op desconocida) ===
+[frontend] python request: "DIV 1 2"
+[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[jajaja]   rewrite steps=1 status=HALTED
+[jajaja]   no rule matched the request -> no backend call
+[jajaja]   (ops soportadas: ADD, MAX, ECHO, COUNT)
+exit=1
+
+=== sin runtime (negativo: no fallback) ===
+[frontend] python request: "ADD 2 3"
+[backend]  FAIL: LOLCODE_CMD points to a missing file: 'C:\\no\\existe\\lci.exe'. Install lci (see backends/lolcode/README.md) or fix the env var.
+exit=1
+
+=== py test_backend_lolcode.py ===
+
+=== STATIC ===
+OK   programs dir exists
+OK   program file: sum.lol
+OK   sum.lol opens with HAI
+OK   sum.lol closes KTHXBYE
+OK   program file: max.lol
+OK   max.lol opens with HAI
+OK   max.lol closes KTHXBYE
+OK   program file: echo.lol
+OK   echo.lol opens with HAI
+OK   echo.lol closes KTHXBYE
+OK   program file: count.lol
+OK   count.lol opens with HAI
+OK   count.lol closes KTHXBYE
+OK   adapter has no canned result table
+OK   unknown op refused
+
+=== JAJAJA IN PATH ===
+OK   jajaja rewrote the request
+OK   jajaja halted
+OK   jajaja emitted lolcode effect
+OK   jajaja confirmed receipt
+OK   unknown op: jajaja does NOT emit backend effect
+OK   capability denied outside allowlist
+
+=== NEGATIVE: NO RUNTIME ===
+OK   missing runtime raises
+OK   no-runtime receipt is not OK
+OK   no-runtime payload is not a computed 5
+
+=== END-TO-END (external LOLCODE runtime) ===
+OK   ADD 2 3 -> 5 (LOLCODE computed)
+OK   ADD 17 25 -> 42 (not a canned demo pair)
+OK   MAX 9 4 -> 9 (branch picks left)
+OK   MAX 2 7 -> 7 (branch picks right)
+OK   ECHO hello backend -> echo
+OK   COUNT 3 -> 3 2 1 0 (real loop)
+
+30 OK, 0 FAILED, 0 SKIPPED
+exit=0
+
