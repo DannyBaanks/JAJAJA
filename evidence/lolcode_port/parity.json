@@ -17,7 +17,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 0.000539,
+      "time_python_s": 2.1e-05,
       "time_lolcode_s": 0.022
     },
     {
@@ -36,8 +36,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 3.5e-05,
-      "time_lolcode_s": 0.009
+      "time_python_s": 2e-05,
+      "time_lolcode_s": 0.007
     },
     {
       "case": "eco",
@@ -55,7 +55,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 4.3e-05,
+      "time_python_s": 1.5e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -74,8 +74,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 3.4e-05,
-      "time_lolcode_s": 0.011
+      "time_python_s": 4.3e-05,
+      "time_lolcode_s": 0.01
     },
     {
       "case": "command",
@@ -93,7 +93,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.3e-05,
+      "time_python_s": 1.1e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -112,8 +112,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 3e-05,
-      "time_lolcode_s": 0.01
+      "time_python_s": 2.9e-05,
+      "time_lolcode_s": 0.011
     },
     {
       "case": "busy_beaver",
@@ -131,7 +131,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 6e-05,
+      "time_python_s": 3.1e-05,
       "time_lolcode_s": 0.014
     },
     {
@@ -150,8 +150,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.6e-05,
-      "time_lolcode_s": 0.008
+      "time_python_s": 1.9e-05,
+      "time_lolcode_s": 0.007
     },
     {
       "case": "simple_counter",
@@ -169,7 +169,7 @@
         "status": "MAX_STEPS"
       },
       "match": true,
-      "time_python_s": 2.2e-05,
+      "time_python_s": 4.4e-05,
       "time_lolcode_s": 0.009
     },
     {
@@ -188,7 +188,7 @@
         "status": "MAX_STEPS"
       },
       "match": true,
-      "time_python_s": 2.5e-05,
+      "time_python_s": 3.1e-05,
       "time_lolcode_s": 0.01
     },
     {
@@ -207,8 +207,8 @@
         "status": "MAX_STEPS"
       },
       "match": true,
-      "time_python_s": 1.5e-05,
-      "time_lolcode_s": 0.01
+      "time_python_s": 1.4e-05,
+      "time_lolcode_s": 0.008
     },
     {
       "case": "lhs_in_rhs_grows",
@@ -226,8 +226,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 2e-05,
-      "time_lolcode_s": 0.009
+      "time_python_s": 1.6e-05,
+      "time_lolcode_s": 0.008
     },
     {
       "case": "self_rewrite_infinite",
@@ -245,8 +245,8 @@
         "status": "MAX_STEPS"
       },
       "match": true,
-      "time_python_s": 2e-05,
-      "time_lolcode_s": 0.009
+      "time_python_s": 2.3e-05,
+      "time_lolcode_s": 0.008
     },
     {
       "case": "order_first_long",
@@ -264,7 +264,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.1e-05,
+      "time_python_s": 1.2e-05,
       "time_lolcode_s": 0.007
     },
     {
@@ -283,7 +283,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.2e-05,
+      "time_python_s": 1.4e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -302,7 +302,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.2e-05,
+      "time_python_s": 1.3e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -321,7 +321,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.1e-05,
+      "time_python_s": 1.5e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -340,7 +340,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.7e-05,
+      "time_python_s": 1.2e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -359,8 +359,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 5.8e-05,
-      "time_lolcode_s": 0.012
+      "time_python_s": 5e-05,
+      "time_lolcode_s": 0.011
     },
     {
       "case": "sep_with_spaces",
@@ -378,8 +378,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.6e-05,
-      "time_lolcode_s": 0.01
+      "time_python_s": 1.7e-05,
+      "time_lolcode_s": 0.007
     },
     {
       "case": "comments_between_rules",
@@ -397,8 +397,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.5e-05,
-      "time_lolcode_s": 0.008
+      "time_python_s": 1.3e-05,
+      "time_lolcode_s": 0.007
     },
     {
       "case": "hash_in_rhs",
@@ -416,7 +416,7 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 1.7e-05,
+      "time_python_s": 1.8e-05,
       "time_lolcode_s": 0.008
     },
     {
@@ -435,8 +435,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 3.5e-05,
-      "time_lolcode_s": 0.011
+      "time_python_s": 2.3e-05,
+      "time_lolcode_s": 0.01
     },
     {
       "case": "stdin_brackets",
@@ -454,8 +454,8 @@
         "status": "HALTED"
       },
       "match": true,
-      "time_python_s": 4.6e-05,
-      "time_lolcode_s": 0.017
+      "time_python_s": 4.8e-05,
+      "time_lolcode_s": 0.016
     }
   ],
   "total": 24,

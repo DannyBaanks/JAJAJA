@@ -1,28 +1,19 @@
 HAI 1.3
 
 BTW ==========================================================================
-BTW  tm_compile.lol — compilador Maquina de Turing -> JAJAJA, en LOLCODE
-BTW
+BTW  tm_compile.lol ??? compilador Maquina de Turing -> JAJAJA, en LOLCODE
 BTW  Espejo de proofs/tm_to_jajaja.py (misma codificacion):
-BTW    <q>$      ::= <q>_$       (extension a la derecha, por estado)
-BTW    <q>s      ::= s'<q'>      (movimiento R)
-BTW    x<q>s   ::= <q'>xs'       (movimiento L, por cada simbolo x del alfabeto
-BTW                              mas el blank)
-BTW    |<q>s   ::= |<q'>_s'      (L pegado al tope izquierdo; extiende)
-BTW    <halt>  ::= ~HALT         (firma de parada)
-BTW    ::=
-BTW    |<start><tape>$
-BTW
-BTW  Verificacion byte-a-byte contra el generador Python:
-BTW  tools/compare_tm_compile.py
+BTW    <q>$  ::= <q>_$        extension a la derecha, por estado
+BTW    <q>s  ::= s'<q'>         movimiento a la derecha
+BTW    x<q>s ::= <q'>xs'        movimiento a la izq, por simbolo x (+blank)
+BTW    |<q>s ::= |<q'>_s'       izquierda pegada al tope (extiende)
+BTW    <h>   ::= ~HALT          firma de parada
+BTW  Salida: el .jaja compilado completo, byte a byte igual al generador
+BTW  Python. Verificacion: tools/compare_tm_compile.py
 BTW ==========================================================================
 
-BTW consts (truco lci: usar variables en llamadas, no ":")
-I HAS A NL ITZ ":)"
-I HAS A COL ITZ ":"
-I HAS A JSEP ITZ "::::="
+BTW Literales constantes, NUNCA yuxtapuestas (bug de lexer lci):
 
-BTW ---- estructura TM (bukkit) ----
 HOW IZ I NEWTM YR NAM AN YR START AN YR HALT
   I HAS A T ITZ A BUKKIT
   T HAS A NAME ITZ NAM
@@ -61,12 +52,16 @@ HOW IZ I ADDTRANS YR TM AN YR QF AN YR SF AN YR QT AN YR ST AN YR MV
   FOUND YR 1
 IF U SAY SO
 
+BTW ---- emision directa a stdout ----
+BTW IMPORTANTE: SMOOSH en lci re-aplica el procesado de escapes sobre sus
+BTW operandos: SMOOSH A1(":" separado por variable) funciona, pero dos ":" 
+BTW juntos via hex/escapes se colapsan. Por eso el separador '::=' se emite
+BTW con VISIBLE directo (VISIBLE nunca re-aplica escapes).
 HOW IZ I COMPILE YR TM AN YR TAPE
-  I HAS A OUT ITZ ""
-
-  BTW extension DERECHA: <q>$ ::= <q>_$
+  I HAS A O0 ITZ ""
+  BTW 1) extension de cinta por estado no-halt: <q>$ ::= <q>_$
   I HAS A I ITZ 0
-  IM IN YR EXTEND
+  IM IN YR EXT
     BOTH SAEM I AN TM'Z NST, O RLY?
       YA RLY
         GTFO
@@ -74,12 +69,16 @@ HOW IZ I COMPILE YR TM AN YR TAPE
     I HAS A Q ITZ TM'Z STATES'Z SRS I
     DIFFRINT Q AN TM'Z HALT, O RLY?
       YA RLY
-        OUT R SMOOSH OUT AN "<" AN Q AN ">$" AN JSEP AN "<" AN Q AN ">_" AN "$" AN NL MKAY
+        I HAS A L1 ITZ SMOOSH "<" AN Q AN ">$" MKAY
+        I HAS A R1 ITZ SMOOSH "<" AN Q AN ">_$" MKAY
+        VISIBLE L1!
+        VISIBLE ":(3A):(3A)"!
+        VISIBLE "="!
+        VISIBLE R1
     OIC
     I R SUM OF I AN 1
-  IM OUTTA YR EXTEND
-
-  BTW transiciones
+  IM OUTTA YR EXT
+  BTW 2) transiciones
   I HAS A TI ITZ 0
   IM IN YR TRS
     BOTH SAEM TI AN TM'Z NTR, O RLY?
@@ -94,11 +93,15 @@ HOW IZ I COMPILE YR TM AN YR TAPE
     I HAS A MV ITZ ROW'Z SRS 4
     BOTH SAEM MV AN "R", O RLY?
       YA RLY
-        BTW <q>s ::= s'<q'>
-        OUT R SMOOSH OUT AN "<" AN Q AN ">" AN S AN JSEP AN S2 AN "<" AN Q2 AN ">" AN NL MKAY
+        I HAS A L1 ITZ SMOOSH "<" AN Q AN ">" AN S MKAY
+        I HAS A R1 ITZ SMOOSH S2 AN "<" AN Q2 AN ">" MKAY
+        VISIBLE L1!
+        VISIBLE ":(3A):(3A)"!
+        VISIBLE "="!
+        VISIBLE R1
       NO WAI
         I HAS A XI ITZ 0
-        IM IN YR SYMS
+        IM IN YR SYM
           BOTH SAEM XI AN SUM OF TM'Z NAL AN 1, O RLY?
             YA RLY
               GTFO
@@ -108,21 +111,35 @@ HOW IZ I COMPILE YR TM AN YR TAPE
             YA RLY
               XS R TM'Z ALPHA'Z SRS XI
           OIC
-          BTW x<q>s ::= <q'>xs'
-          OUT R SMOOSH OUT AN XS AN "<" AN Q AN ">" AN S AN JSEP AN "<" AN Q2 AN ">" AN XS AN S2 AN NL MKAY
+          I HAS A L1 ITZ SMOOSH XS AN "<" AN Q AN ">" AN S MKAY
+          I HAS A R1 ITZ SMOOSH "<" AN Q2 AN ">" AN XS AN S2 MKAY
+          VISIBLE L1!
+          VISIBLE ":(3A):(3A)"!
+          VISIBLE "="!
+          VISIBLE R1
           XI R SUM OF XI AN 1
-        IM OUTTA YR SYMS
-        BTW tope izquierdo: |<q>s ::= |<q'>_s'
-        OUT R SMOOSH OUT AN "|<" AN Q AN ">" AN S AN JSEP AN "|<" AN Q2 AN ">" AN "_" AN S2 AN NL MKAY
+        IM OUTTA YR SYM
+        BTW tope izquierdo
+        I HAS A L2 ITZ SMOOSH "|<" AN Q AN ">" AN S MKAY
+        I HAS A R2 ITZ SMOOSH "|<" AN Q2 AN ">" AN "_" AN S2 MKAY
+        VISIBLE L2!
+        VISIBLE ":(3A):(3A)"!
+        VISIBLE "="!
+        VISIBLE R2
     OIC
     TI R SUM OF TI AN 1
   IM OUTTA YR TRS
-
-  BTW firma halt + separador + base
-  OUT R SMOOSH OUT AN "<" AN TM'Z HALT AN ">" AN JSEP AN "~HALT" AN NL MKAY
-  OUT R SMOOSH OUT AN JSEP AN NL MKAY
-  OUT R SMOOSH OUT AN "|<" AN TM'Z START AN ">" AN TAPE AN "$" AN NL MKAY
-  FOUND YR OUT
+  BTW 3) firma halt: <h>::=~HALT
+  I HAS A H1 ITZ SMOOSH "<" AN TM'Z HALT AN ">" MKAY
+  VISIBLE H1!
+  VISIBLE ":(3A):(3A)=~HALT"
+  BTW 4) separador y base
+  VISIBLE ":(3A):(3A)="
+  I HAS A B1 ITZ SMOOSH "|<" AN TM'Z START AN ">" MKAY
+  VISIBLE B1!
+  VISIBLE TAPE!
+  VISIBLE "$"
+  FOUND YR 1
 IF U SAY SO
 
 HOW IZ I TM_BININC
@@ -169,12 +186,14 @@ IF U SAY SO
 BTW ---- driver ----
 I HAS A T1 ITZ I IZ TM_BININC MKAY
 VISIBLE "==== binary_increment 1011 ===="
-VISIBLE I IZ COMPILE YR T1 AN YR "1011" MKAY!
+I HAS A Z1 ITZ I IZ COMPILE YR T1 AN YR "1011" MKAY
+
 I HAS A T2 ITZ I IZ TM_BITFLIP MKAY
 VISIBLE "==== bit_flip 1011 ===="
-VISIBLE I IZ COMPILE YR T2 AN YR "1011" MKAY!
+I HAS A Z2 ITZ I IZ COMPILE YR T2 AN YR "1011" MKAY
+
 I HAS A T3 ITZ I IZ TM_PARITY MKAY
 VISIBLE "==== parity 1111 ===="
-VISIBLE I IZ COMPILE YR T3 AN YR "1111" MKAY!
+I HAS A Z3 ITZ I IZ COMPILE YR T3 AN YR "1111" MKAY
 
 KTHXBYE
