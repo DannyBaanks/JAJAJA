@@ -1,0 +1,296 @@
+HAI 1.3
+
+BTW ==========================================================================
+BTW  ja_encoding.lol — compilador TM -> JAJAJA con alfabeto de risas puras
+BTW  Espejo de proofs/ja_encoding.py (la parte _compiladora_, sin el run).
+BTW
+BTW  Codificacion: cada token es "ja" repetido; el DELIMITADOR es el espacio.
+BTW  1="|", 2="$", simbolos en orden, estados despues. Sin regla ~HALT (nota
+BTW  documentada en el hermano Python: la regla emisora borra los
+BTW  delimitadores y corrompe la cinta).
+BTW
+BTW  Salida: stdout = programa .jaja byte-identico al de la version Python.
+BTW  Verificacion: tools/compare_ja_compile.py
+BTW ==========================================================================
+
+I HAS A SYM ITZ A BUKKIT
+I HAS A NSYM ITZ 0
+I HAS A STATES ITZ A BUKKIT
+I HAS A NST ITZ 0
+I HAS A HALTNM ITZ ""
+I HAS A TRANSX ITZ A BUKKIT
+I HAS A NTR ITZ 0
+
+HOW IZ I GSYM YR S
+  SYM HAS A SRS NSYM ITZ S
+  NSYM R SUM OF NSYM AN 1
+  FOUND YR 1
+IF U SAY SO
+
+HOW IZ I GST YR S
+  STATES HAS A SRS NST ITZ S
+  NST R SUM OF NST AN 1
+  FOUND YR 1
+IF U SAY SO
+
+HOW IZ I TR YR QF AN YR SF AN YR QT AN YR ST AN YR MV
+  I HAS A W ITZ A BUKKIT
+  W HAS A SRS 0 ITZ QF
+  W HAS A SRS 1 ITZ SF
+  W HAS A SRS 2 ITZ QT
+  W HAS A SRS 3 ITZ ST
+  W HAS A SRS 4 ITZ MV
+  TRANSX HAS A SRS NTR ITZ W
+  NTR R SUM OF NTR AN 1
+  FOUND YR 1
+IF U SAY SO
+
+BTW indice unario del token: 1="|", 2="$", 3.. simbolos, luego estados
+HOW IZ I CODEIDX YR T
+  BOTH SAEM T AN "|", O RLY?
+    YA RLY
+      FOUND YR 1
+  OIC
+  BOTH SAEM T AN "$", O RLY?
+    YA RLY
+      FOUND YR 2
+  OIC
+  I HAS A II ITZ 0
+  IM IN YR L1
+    BOTH SAEM II AN NSYM, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    BOTH SAEM T AN SYM'Z SRS II, O RLY?
+      YA RLY
+        FOUND YR SUM OF 3 AN II
+    OIC
+    II R SUM OF II AN 1
+  IM OUTTA YR L1
+  I HAS A JJ ITZ 0
+  IM IN YR L2
+    BOTH SAEM JJ AN NST, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    BOTH SAEM T AN STATES'Z SRS JJ, O RLY?
+      YA RLY
+        FOUND YR SUM OF SUM OF 3 AN NSYM AN JJ
+    OIC
+    JJ R SUM OF JJ AN 1
+  IM OUTTA YR L2
+  FOUND YR 0
+IF U SAY SO
+
+HOW IZ I JAREP YR N
+  I HAS A RR ITZ ""
+  I HAS A C ITZ 0
+  IM IN YR LP
+    BOTH SAEM C AN N, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    RR R SMOOSH RR AN "ja" MKAY
+    C R SUM OF C AN 1
+  IM OUTTA YR LP
+  FOUND YR RR
+IF U SAY SO
+
+HOW IZ I WORDLIST YR BUK AN YR N
+  I HAS A SS ITZ " "
+  I HAS A II ITZ 0
+  IM IN YR LP
+    BOTH SAEM II AN N, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    I HAS A TK ITZ I IZ JAREP YR I IZ CODEIDX YR BUK'Z SRS II MKAY MKAY
+    SS R SMOOSH SS AN TK AN " " MKAY
+    II R SUM OF II AN 1
+  IM OUTTA YR LP
+  FOUND YR SS
+IF U SAY SO
+
+HOW IZ I LIST1 YR AA
+  I HAS A B ITZ A BUKKIT
+  B HAS A SRS 0 ITZ AA
+  FOUND YR B
+IF U SAY SO
+HOW IZ I LIST2 YR AA AN YR BB
+  I HAS A RB ITZ A BUKKIT
+  RB HAS A SRS 0 ITZ AA
+  RB HAS A SRS 1 ITZ BB
+  FOUND YR RB
+IF U SAY SO
+HOW IZ I LIST3 YR AA AN YR BB AN YR CC
+  I HAS A RB ITZ A BUKKIT
+  RB HAS A SRS 0 ITZ AA
+  RB HAS A SRS 1 ITZ BB
+  RB HAS A SRS 2 ITZ CC
+  FOUND YR RB
+IF U SAY SO
+HOW IZ I LIST4 YR AA AN YR BB AN YR CC AN YR DD
+  I HAS A RB ITZ A BUKKIT
+  RB HAS A SRS 0 ITZ AA
+  RB HAS A SRS 1 ITZ BB
+  RB HAS A SRS 2 ITZ CC
+  RB HAS A SRS 3 ITZ DD
+  FOUND YR RB
+IF U SAY SO
+
+HOW IZ I RULELINE YR LBUK AN YR LN AN YR RBUK AN YR RN
+  I HAS A SL ITZ I IZ WORDLIST YR LBUK AN YR LN MKAY
+  I HAS A SR ITZ I IZ WORDLIST YR RBUK AN YR RN MKAY
+  VISIBLE SL!
+  VISIBLE ":(3A):(3A)="!
+  VISIBLE SR
+  FOUND YR 1
+IF U SAY SO
+
+BTW COMPILE: emite (i) extension, (ii) transiciones, (iii) separador
+BTW "::=", (iv) base. Sin regla ~HALT.
+HOW IZ I COMPILE
+  I HAS A II ITZ 0
+  IM IN YR EXT
+    BOTH SAEM II AN NST, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    I HAS A Q ITZ STATES'Z SRS II
+    DIFFRINT Q AN HALTNM, O RLY?
+      YA RLY
+        I HAS A BL ITZ I IZ LIST2 YR Q AN YR "$" MKAY
+        I HAS A BR ITZ I IZ LIST3 YR Q AN YR "_" AN YR "$" MKAY
+        I HAS A KX ITZ I IZ RULELINE YR BL AN YR 2 AN YR BR AN YR 3 MKAY
+    OIC
+    II R SUM OF II AN 1
+  IM OUTTA YR EXT
+  I HAS A TT ITZ 0
+  IM IN YR TL
+    BOTH SAEM TT AN NTR, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    I HAS A W ITZ TRANSX'Z SRS TT
+    I HAS A Q ITZ W'Z SRS 0
+    I HAS A S ITZ W'Z SRS 1
+    I HAS A Q2 ITZ W'Z SRS 2
+    I HAS A S2 ITZ W'Z SRS 3
+    I HAS A MV ITZ W'Z SRS 4
+    BOTH SAEM MV AN "R", O RLY?
+      YA RLY
+        I HAS A LLA ITZ I IZ LIST2 YR Q AN YR S MKAY
+        I HAS A LRA ITZ I IZ LIST2 YR S2 AN YR Q2 MKAY
+        I HAS A KY ITZ I IZ RULELINE YR LLA AN YR 2 AN YR LRA AN YR 2 MKAY
+      NO WAI
+        I HAS A XI ITZ 0
+        IM IN YR SYMLOOP
+          BOTH SAEM XI AN NSYM, O RLY?
+            YA RLY
+              GTFO
+          OIC
+          I HAS A XS ITZ SYM'Z SRS XI
+          I HAS A LLB ITZ I IZ LIST3 YR XS AN YR Q AN YR S MKAY
+          I HAS A LRB ITZ I IZ LIST3 YR Q2 AN YR XS AN YR S2 MKAY
+          I HAS A KZ ITZ I IZ RULELINE YR LLB AN YR 3 AN YR LRB AN YR 3 MKAY
+          XI R SUM OF XI AN 1
+        IM OUTTA YR SYMLOOP
+        I HAS A LL2 ITZ I IZ LIST3 YR "|" AN YR Q AN YR S MKAY
+        I HAS A LR2 ITZ I IZ LIST4 YR "|" AN YR Q2 AN YR "_" AN YR S2 MKAY
+        I HAS A KW ITZ I IZ RULELINE YR LL2 AN YR 3 AN YR LR2 AN YR 4 MKAY
+    OIC
+    TT R SUM OF TT AN 1
+  IM OUTTA YR TL
+  BTW separador de programa
+  VISIBLE ":(3A):(3A)="
+  FOUND YR 1
+IF U SAY SO
+
+BTW BASE: " " | <start> ...tape... $ " " (cada token va separado por espacios)
+HOW IZ I EMITBASE YR TAPEBUK AN YR NTAPE AN YR START
+  I HAS A FULL ITZ A BUKKIT
+  FULL HAS A SRS 0 ITZ "|"
+  FULL HAS A SRS 1 ITZ START
+  I HAS A II ITZ 0
+  IM IN YR CP
+    BOTH SAEM II AN NTAPE, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    FULL HAS A SRS SUM OF 2 AN II ITZ TAPEBUK'Z SRS II
+    II R SUM OF II AN 1
+  IM OUTTA YR CP
+  FULL HAS A SRS SUM OF 2 AN NTAPE ITZ "$"
+  I HAS A SBASE ITZ I IZ WORDLIST YR FULL AN YR SUM OF 3 AN NTAPE MKAY
+  VISIBLE SBASE
+  FOUND YR 1
+IF U SAY SO
+
+BTW ---- definiciones de las dos maquinas, en el mismo orden del Python ----
+
+HOW IZ I SETUP_BININC
+  I HAS A A1 ITZ I IZ GST YR "seek" MKAY
+  I HAS A A2 ITZ I IZ GST YR "carry" MKAY
+  I HAS A A3 ITZ I IZ GST YR "done" MKAY
+  HALTNM R "done"
+  I HAS A B1 ITZ I IZ GSYM YR "0" MKAY
+  I HAS A B2 ITZ I IZ GSYM YR "1" MKAY
+  I HAS A B3 ITZ I IZ GSYM YR "_" MKAY
+  I HAS A C1 ITZ I IZ TR YR "seek" AN YR "0" AN YR "seek" AN YR "0" AN YR "R" MKAY
+  I HAS A C2 ITZ I IZ TR YR "seek" AN YR "1" AN YR "seek" AN YR "1" AN YR "R" MKAY
+  I HAS A C3 ITZ I IZ TR YR "seek" AN YR "_" AN YR "carry" AN YR "_" AN YR "L" MKAY
+  I HAS A C4 ITZ I IZ TR YR "carry" AN YR "1" AN YR "carry" AN YR "0" AN YR "L" MKAY
+  I HAS A C5 ITZ I IZ TR YR "carry" AN YR "0" AN YR "done" AN YR "1" AN YR "L" MKAY
+  I HAS A C6 ITZ I IZ TR YR "carry" AN YR "_" AN YR "done" AN YR "1" AN YR "L" MKAY
+  FOUND YR 1
+IF U SAY SO
+
+HOW IZ I SETUP_BITFLIP
+  I HAS A A1 ITZ I IZ GST YR "flip" MKAY
+  I HAS A A2 ITZ I IZ GST YR "done" MKAY
+  HALTNM R "done"
+  I HAS A B1 ITZ I IZ GSYM YR "0" MKAY
+  I HAS A B2 ITZ I IZ GSYM YR "1" MKAY
+  I HAS A B3 ITZ I IZ GSYM YR "_" MKAY
+  I HAS A C1 ITZ I IZ TR YR "flip" AN YR "0" AN YR "flip" AN YR "1" AN YR "R" MKAY
+  I HAS A C2 ITZ I IZ TR YR "flip" AN YR "1" AN YR "flip" AN YR "0" AN YR "R" MKAY
+  I HAS A C3 ITZ I IZ TR YR "flip" AN YR "_" AN YR "done" AN YR "_" AN YR "L" MKAY
+  FOUND YR 1
+IF U SAY SO
+
+BTW tape strings → bukkit de simbolos
+HOW IZ I TAPE4 YR AA AN YR BB AN YR CC AN YR DD
+  I HAS A T ITZ A BUKKIT
+  T HAS A SRS 0 ITZ AA
+  T HAS A SRS 1 ITZ BB
+  T HAS A SRS 2 ITZ CC
+  T HAS A SRS 3 ITZ DD
+  FOUND YR T
+IF U SAY SO
+
+HOW IZ I NUEVOBUKKIT
+  I HAS A T9 ITZ A BUKKIT
+  FOUND YR T9
+IF U SAY SO
+
+BTW ---- driver ----
+VISIBLE "==== binary_increment 1011 ===="
+I HAS A Z9 ITZ I IZ SETUP_BININC MKAY
+I HAS A K1 ITZ I IZ COMPILE MKAY
+I HAS A TP1 ITZ I IZ TAPE4 YR "1" AN YR "0" AN YR "1" AN YR "1" MKAY
+I HAS A EB1 ITZ I IZ EMITBASE YR TP1 AN YR 4 AN YR "seek" MKAY
+
+VISIBLE "==== bit_flip 1011 ===="
+BTW reinicio manual de las tablas (no hay reassignment de BUKKIT directo)
+SYM R I IZ NUEVOBUKKIT MKAY
+STATES R I IZ NUEVOBUKKIT MKAY
+TRANSX R I IZ NUEVOBUKKIT MKAY
+NSYM R 0
+NST R 0
+NTR R 0
+I HAS A Z11 ITZ I IZ SETUP_BITFLIP MKAY
+I HAS A K2 ITZ I IZ COMPILE MKAY
+I HAS A TP2 ITZ I IZ TAPE4 YR "1" AN YR "0" AN YR "1" AN YR "1" MKAY
+I HAS A EB2 ITZ I IZ EMITBASE YR TP2 AN YR 4 AN YR "flip" MKAY
+
+KTHXBYE
