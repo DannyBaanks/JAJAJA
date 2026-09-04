@@ -1,0 +1,12 @@
+{
+  "src/proofs_lol/tm_compile.lol": "e97c162a41b0ed3c96f3d37ee3bc651d4d131162ad7618d002f08513924f1d58",
+  "src/proofs_lol/ja_encoding.lol": "e847c7779d13a7149225f9006f52705a513d97695ad167bf266eff066f9542b9",
+  "src/parts/70_testkit.lol": "f69ad6e523908f22fdcefaea9659ca59b47d403a1d4d7693cdc6eb61b81456d6",
+  "src/parts/80_tests_main.lol": "626344a97a051f57cc38c8032f99235457e0fad4dc7c3b5175e6566cdf9ea57a",
+  "tools/compare_tm_compile.py": "5187223519d1cb31802e4da1615513a4abeae14b7273daa1dba536b8db7e8425",
+  "tools/compare_ja_compile.py": "e5ae50fb991da5441b2aa5dc4dc98ae872c7484106a881c4ee54ef4b1f5b6c59",
+  "tools/compare_ja_run.py": "38a4770e4b7f49977755127062bbb08a960446e846d7030c373400faec081c50",
+  "test_lolcode_native.py": "366e005363fed87cd3f83ca2b66a2843bb95d3998ce3b9a28d3dd1a3524deaf0",
+  "evidence/lolcode_flip/collect_stats.py": "d49de3986fb0b2470f3074386b2df22fe909bc5d08f46bb77d59b96de42bd64f",
+  "evidence/lolcode_flip/DELTA.md": "99672b448807fd0b7a16962ac43a0e0b3f8335fb2929893741e8ea8e646db350"
+}

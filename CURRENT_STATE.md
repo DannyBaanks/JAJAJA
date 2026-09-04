@@ -104,3 +104,30 @@ medido en nuestra shortlist fue Befunge (228 archivos indexados).
 | CONCURRENCY | NOT_DEMONSTRATED | Single-threaded |
 | NATIVE_CODEGEN | NOT_DEMONSTRATED | No JIT/AOT |
 | BARE_METAL | OUT_OF_SCOPE | Requires hardware |
+
+
+Addendum 2026-09-04 (M1–M4) — LOLCODE queda como el ejecutable de referencia
+para generar y validar artefactos JAJAJA. Los resultados anteriores siguen
+intactos; aquí se añade que:
+
+```
+src/parts/*.lol               runtime JAJAJA descompuesto en modulos (M1)
+tools/build_lol.py            ensamblador (builds/jajaja.cfg)
+tests/runtime_tests.lol       suite nativa LOLCODE, 22 aserciones (M2)
+src/proofs_lol/tm_compile.lol TM→JAJAJA en LOLCODE (M3)
+src/proofs_lol/ja_encoding.lol TM→JAJAJA en risas puras (M4)
+
+py test_lolcode_native.py           -> 4 OK, 0 FAILED
+py tools/compare_tm_compile.py      -> 3/3 byte-identical
+py tools/compare_ja_compile.py      -> 2/2 byte-identical
+py tools/compare_ja_run.py          -> 2/2 pass (runtime + tape)
+py tools/parity_check.py --check-only   -> 24/24 MATCH
+py tools/turing_parity_lol.py       -> 7/7 identical
+
+Composicion del repo (bytes tracked):
+  .py 117,881 | .md 64,084 | .lol 56,402 | .json 15,838 | .jaja 7,062
+LOLCODE se cuadruplicó en bytes respecto a 2026-09-03.
+```
+
+Python queda como oráculo y tooling; la especificación del runtime ya no
+depende del intérprete Python.

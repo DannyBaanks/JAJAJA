@@ -1,0 +1,62 @@
+{
+  ".py": {
+    "files": 27,
+    "bytes": 119228,
+    "lines": 3333
+  },
+  ".pyc": {
+    "files": 15,
+    "bytes": 93588,
+    "lines": 835
+  },
+  ".lol": {
+    "files": 21,
+    "bytes": 79428,
+    "lines": 2692
+  },
+  ".md": {
+    "files": 16,
+    "bytes": 64084,
+    "lines": 1602
+  },
+  ".json": {
+    "files": 4,
+    "bytes": 15838,
+    "lines": 637
+  },
+  ".jaja": {
+    "files": 19,
+    "bytes": 7062,
+    "lines": 305
+  },
+  ".wiki": {
+    "files": 1,
+    "bytes": 6218,
+    "lines": 114
+  },
+  ".html": {
+    "files": 1,
+    "bytes": 3993,
+    "lines": 85
+  },
+  ".txt": {
+    "files": 1,
+    "bytes": 3388,
+    "lines": 99
+  },
+  "": {
+    "files": 3,
+    "bytes": 1564,
+    "lines": 33
+  },
+  ".cfg": {
+    "files": 2,
+    "bytes": 361,
+    "lines": 22
+  },
+  ".toml": {
+    "files": 1,
+    "bytes": 172,
+    "lines": 5
+  }
+}

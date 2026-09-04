@@ -30,8 +30,18 @@ JAJAJA tiene dos runtimes con la MISMA semántica:
 
 | runtime | ejecutor | papel |
 |---|---|---|
-| `src/jajaja.lol` | un runtime LOLCODE externo (`lci`) | implementación en LOLCODE |
+| `src/jajaja.lol` (armado desde `src/parts/*.lol`) | un runtime LOLCODE externo (`lci`) | implementación en LOLCODE |
 | `jajaja_interpreter.py` | Python | oráculo de referencia y herramientas |
+
+Además de correr programas, el repo ya incluye en **LOLCODE** los generadores
+que lo construyen: `src/proofs_lol/tm_compile.lol` compila màquinas de Turing
+a JAJAJA (byte-idéntico al generador Python, verificado por
+`tools/compare_tm_compile.py`) y `src/proofs_lol/ja_encoding.lol` hace la
+versión en risas puras (verificado con `tools/compare_ja_compile.py` y
+`tools/compare_ja_run.py`). La suite nativa `tests/runtime_tests.lol`
+corre 22 aserciones dentro de lci vía `test_lolcode_native.py`.
+
+Guía operativa (en español, con salidas reales): `docs/GUIA_LOLCODE.md`.
 
 Para correr sobre LOLCODE (requiere un intérprete `lci` disponible; ver
 `backends/lolcode/README.md`):
