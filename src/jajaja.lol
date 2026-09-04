@@ -454,8 +454,10 @@ IM IN YR MACH
       GTFO
   OIC
 IM OUTTA YR MACH
-BTW cierre semantico: si ninguna regla matcheo ya es HALT (afin). Si
-BTW sigue RUNNING por presupuesto, queda MAX_STEPS en el driver/test.
+BTW cierre semantico igual que el oráculo: nada matcheo -> HALTED;
+BTW presupuesto agotado -> MAX_STEPS. Viva aquí para que cualquier caller
+BTW (driver o tests) reciba el status final correcto sin repetir lógica.
+I HAS A FINRES ITZ I IZ FINISHSTATUS MKAY
 FOUND YR 1
 IF U SAY SO
 

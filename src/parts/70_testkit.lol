@@ -85,6 +85,21 @@ HOW IZ I FEEDLINE YR LBUF AN YR LLEN
   FOUND YR RRQ
 IF U SAY SO
 
+BTW BASEYARN: lee la base actual como yarn (para asserts)
+HOW IZ I BASEYARN
+  I HAS A S ITZ ""
+  I HAS A I ITZ 0
+  IM IN YR LP
+    BOTH SAEM I AN BLEN, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    S R SMOOSH S AN BASE'Z SRS I MKAY
+    I R SUM OF I AN 1
+  IM OUTTA YR LP
+  FOUND YR S
+IF U SAY SO
+
 BTW PUSHCH/ENDLINE: escribe una linea caracter a caracter, como el driver
 BTW de transporte lo haria con el stream; la misma LINE queda armada.
 BTW TRUCO lci: pasar una yarn ":" como ultimo argumento de una funcion
@@ -95,7 +110,14 @@ HOW IZ I GETCOLON
 IF U SAY SO
 
 HOW IZ I PUSHCOLON
-  I HAS A C ITZ I IZ GETCOLON MKAY
+  I HAS A C ITZ ":"
+  I HAS A RQ ITZ I IZ PUSHCH YR C MKAY
+  FOUND YR RQ
+IF U SAY SO
+
+BTW PUSHTILD: empuja el caracter ~ (prefijo de emision)
+HOW IZ I PUSHTILD
+  I HAS A C ITZ "~"
   I HAS A RQ ITZ I IZ PUSHCH YR C MKAY
   FOUND YR RQ
 IF U SAY SO
