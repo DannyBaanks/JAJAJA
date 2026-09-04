@@ -1,0 +1,16 @@
+
+BTW ---- RESETMACH: reinicia el estado de la maquina entre tests ----
+HOW IZ I RESETMACH
+  RULES R I IZ MKBUKKIT MKAY
+  NRULES R 0
+  BASE R I IZ MKBUKKIT MKAY
+  BLEN R 0
+  OUTB R I IZ MKBUKKIT MKAY
+  OUTN R 0
+  STEPS R 0
+  STAT R "RUNNING"
+  LINENO R 0
+  MODE R "rules"
+  MAXS R 200000
+  FOUND YR 1
+IF U SAY SO

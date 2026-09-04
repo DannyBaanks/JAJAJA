@@ -76,6 +76,11 @@ I HAS A MAXS ITZ 200000
 
 BTW ---- helpers de la maquina ----
 
+HOW IZ I MKBUKKIT
+  I HAS A B ITZ A BUKKIT
+  FOUND YR B
+IF U SAY SO
+
 BTW APPENDOUT: agrega un char al buffer de salida
 HOW IZ I APPENDOUT YR C
   OUTB HAS A SRS OUTN ITZ C
@@ -354,6 +359,7 @@ OIC
 
 BTW ---- maquina de Markov (rewrite ordenado; primera regla aplicable gana;
 BTW      sustituye / emite de acuerdo a la especificacion) ----
+HOW IZ I RUNMACHINE
 IM IN YR MACH
   BOTH SAEM STAT AN "RUNNING", O RLY?
     YA RLY
@@ -448,17 +454,28 @@ IM IN YR MACH
       GTFO
   OIC
 IM OUTTA YR MACH
+BTW cierre semantico: si ninguna regla matcheo ya es HALT (afin). Si
+BTW sigue RUNNING por presupuesto, queda MAX_STEPS en el driver/test.
+FOUND YR 1
+IF U SAY SO
 
-BTW ---- status final (si no paro por si solo, el presupuesto manda) ----
-BOTH SAEM STAT AN "RUNNING", O RLY?
-  YA RLY
-    BOTH SAEM STEPS AN MAXS, O RLY?
-      YA RLY
-        STAT R "MAX_STEPS"
-      NO WAI
-        STAT R "HALTED"
-    OIC
-OIC
+BTW ---- status final: si no paro solo, el presupuesto manda ----
+HOW IZ I FINISHSTATUS
+  BOTH SAEM STAT AN "RUNNING", O RLY?
+    YA RLY
+      BOTH SAEM STEPS AN MAXS, O RLY?
+        YA RLY
+          STAT R "MAX_STEPS"
+        NO WAI
+          STAT R "HALTED"
+      OIC
+  OIC
+  FOUND YR 1
+IF U SAY SO
+
+BTW ---- invoca la maquina y cierra status ----
+I HAS A MRES ITZ I IZ RUNMACHINE MKAY
+I HAS A FRES ITZ I IZ FINISHSTATUS MKAY
 
 BTW ---- reporte final: output + frame ----
 I HAS A FIN ITZ 0

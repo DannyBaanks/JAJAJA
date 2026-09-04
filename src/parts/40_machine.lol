@@ -1,6 +1,7 @@
 
 BTW ---- maquina de Markov (rewrite ordenado; primera regla aplicable gana;
 BTW      sustituye / emite de acuerdo a la especificacion) ----
+HOW IZ I RUNMACHINE
 IM IN YR MACH
   BOTH SAEM STAT AN "RUNNING", O RLY?
     YA RLY
@@ -95,3 +96,7 @@ IM IN YR MACH
       GTFO
   OIC
 IM OUTTA YR MACH
+BTW cierre semantico: si ninguna regla matcheo ya es HALT (afin). Si
+BTW sigue RUNNING por presupuesto, queda MAX_STEPS en el driver/test.
+FOUND YR 1
+IF U SAY SO

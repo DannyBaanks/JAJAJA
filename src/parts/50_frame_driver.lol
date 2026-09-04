@@ -1,4 +1,8 @@
 
+BTW ---- invoca la maquina y cierra status ----
+I HAS A MRES ITZ I IZ RUNMACHINE MKAY
+I HAS A FRES ITZ I IZ FINISHSTATUS MKAY
+
 BTW ---- reporte final: output + frame ----
 I HAS A FIN ITZ 0
 IM IN YR DUMP

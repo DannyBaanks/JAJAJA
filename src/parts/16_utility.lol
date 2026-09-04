@@ -1,6 +1,11 @@
 
 BTW ---- helpers de la maquina ----
 
+HOW IZ I MKBUKKIT
+  I HAS A B ITZ A BUKKIT
+  FOUND YR B
+IF U SAY SO
+
 BTW APPENDOUT: agrega un char al buffer de salida
 HOW IZ I APPENDOUT YR C
   OUTB HAS A SRS OUTN ITZ C
