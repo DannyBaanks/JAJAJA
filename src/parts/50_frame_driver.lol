@@ -1,0 +1,18 @@
+
+BTW ---- reporte final: output + frame ----
+I HAS A FIN ITZ 0
+IM IN YR DUMP
+  BOTH SAEM FIN AN OUTN, O RLY?
+    YA RLY
+      GTFO
+  OIC
+  VISIBLE OUTB'Z SRS FIN!
+  FIN R SUM OF FIN AN 1
+IM OUTTA YR DUMP
+VISIBLE ""
+VISIBLE "<|JAJAJA|status=" !
+VISIBLE STAT !
+VISIBLE "|steps=" !
+VISIBLE STEPS !
+VISIBLE "|>"
+KTHXBYE

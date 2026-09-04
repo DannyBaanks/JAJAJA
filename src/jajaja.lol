@@ -1,30 +1,9 @@
 HAI 1.3
 
 BTW ==========================================================================
-BTW  JAJAJA runtime, implementado en LOLCODE 1.3 (runtime externo: lci v1.3)
-BTW
-BTW  Espejo semantico de jajaja_interpreter.py (oraculo Python):
-BTW   - reglas ordenadas; la PRIMERA regla aplicable gana y la busqueda
-BTW     reinicia desde la regla 0 (algoritmo normal de Markov)
-BTW   - ocurrencia leftmost de lhs en base (str.find)
-BTW   - rhs "~texto": EMITE texto y ELIMINA el match;  rhs "~": newline
-BTW   - lhs vacio: la regla NUNCA se aplica (skip al evaluar)
-BTW   - parse: en seccion de reglas se saltan lineas vacias y comentarios "#";
-BTW     separador = linea "::=" (espacios/tabs alrededor tolerados);
-BTW     base = primera linea no-vacia/no-comentario tras el separador
-BTW   - stdin: si no vacio -> base = stdin + " " + base
-BTW   - status: HALTED | MAX_STEPS | SYNTAX_ERROR
-BTW
-BTW  STREAM DE ENTRADA (stdin, una unidad por linea):
-BTW    char crudo   -> un caracter del flujo
-BTW    <<N>>        -> caracter '\n'
-BTW    <<T>>        -> caracter '\t'
-BTW    <<S1>>       -> fin programa; empieza input
-BTW    <<S2>>       -> fin input; empieza control (digitos = max_steps)
-BTW    <<EOF>>      -> fin total
-BTW
-BTW  SALIDA: output del programa, luego una linea:
-BTW    <|JAJAJA|status=<S>|steps=<N>|>
+BTW  JAJAJA runtime / libreria — LOLCODE 1.3 (runtime externo: lci)
+BTW  Este archivo es ARMADO con tools/build_lol.py desde src/parts/*.lol
+BTW  No edites el archivo ensamblado directamente; edita las partes.
 BTW ==========================================================================
 
 I HAS A NL ITZ ":)"
@@ -78,26 +57,53 @@ HOW IZ I FIND YR HAY AN YR HN AN YR NDL AN YR NN
   FOUND YR RES
 IF U SAY SO
 
-BTW ---- KEEPCOPY D B S E: copia chars S..E-1 de origen O al destino D ----
-BTW (desde posicion global no hace falta: se hace inline)
-
-BTW ---- estado global ----
+BTW ---- estado global de la maquina (bukkits sobreviven a los bloques) ----
 I HAS A RULES ITZ A BUKKIT
 I HAS A NRULES ITZ 0
 I HAS A BASE ITZ A BUKKIT
 I HAS A BLEN ITZ 0
+I HAS A OUTB ITZ A BUKKIT
+I HAS A OUTN ITZ 0
 I HAS A INP ITZ A BUKKIT
 I HAS A INPLEN ITZ 0
 I HAS A LINE ITZ A BUKKIT
 I HAS A LN ITZ 0
 I HAS A LINENO ITZ 0
 I HAS A MODE ITZ "rules"
-I HAS A SECT ITZ "prog"
 I HAS A STEPS ITZ 0
 I HAS A STAT ITZ "RUNNING"
-I HAS A MAXTXT ITZ ""
 I HAS A MAXS ITZ 200000
-I HAS A TOK ITZ ""
+
+BTW ---- helpers de la maquina ----
+
+BTW APPENDOUT: agrega un char al buffer de salida
+HOW IZ I APPENDOUT YR C
+  OUTB HAS A SRS OUTN ITZ C
+  OUTN R SUM OF OUTN AN 1
+  FOUND YR 1
+IF U SAY SO
+
+BTW SETBASE: sustituye la base por un bukkit nuevo
+HOW IZ I SETBASE YR NB AN YR NLN
+  BASE R NB
+  BLEN R NLN
+  FOUND YR 1
+IF U SAY SO
+
+BTW OUTYARN: devuelve el buffer de salida como yarn
+HOW IZ I OUTYARN
+  I HAS A S ITZ ""
+  I HAS A OI ITZ 0
+  IM IN YR JOIN
+    BOTH SAEM OI AN OUTN, O RLY?
+      YA RLY
+        GTFO
+    OIC
+    S R SMOOSH S AN OUTB'Z SRS OI MKAY
+    OI R SUM OF OI AN 1
+  IM OUTTA YR JOIN
+  FOUND YR S
+IF U SAY SO
 
 BTW ---- LINEHANDLE: procesa la linea actual LINE (len LN) segun MODE ----
 HOW IZ I LINEHANDLE
@@ -195,7 +201,7 @@ HOW IZ I LINEHANDLE
       REC HAS A LL ITZ KF
       REC HAS A T ITZ RHSB
       REC HAS A TN ITZ RLENO
-          REC HAS A EM ITZ 0
+      REC HAS A EM ITZ 0
       BOTH SAEM RLENO AN BIGGR OF RLENO AN 1, O RLY?
         YA RLY
           BOTH SAEM RHSB'Z SRS 0 AN TILD, O RLY?
@@ -245,7 +251,12 @@ HOW IZ I LINEHANDLE
   FOUND YR "noop"
 IF U SAY SO
 
-BTW ---- lee el stream ----
+BTW ---- estado de transporte (solo el driver stdio lo usa) ----
+I HAS A SECT ITZ "prog"
+I HAS A MAXTXT ITZ ""
+I HAS A TOK ITZ ""
+
+BTW ---- lee el stream de transporte ----
 IM IN YR EAT
   GIMMEH TOK
   BOTH SAEM TOK AN "<<EOF>>", O RLY?
@@ -341,7 +352,8 @@ DIFFRINT INPLEN AN 0, O RLY?
     BLEN R SUM OF BI AN BJ
 OIC
 
-BTW ---- maquina de Markov ----
+BTW ---- maquina de Markov (rewrite ordenado; primera regla aplicable gana;
+BTW      sustituye / emite de acuerdo a la especificacion) ----
 IM IN YR MACH
   BOTH SAEM STAT AN "RUNNING", O RLY?
     YA RLY
@@ -386,7 +398,7 @@ IM IN YR MACH
                 BTW emision: rhs[1:] al output (o newline si vacio)
                 BOTH SAEM RUL'Z TN AN 1, O RLY?
                   YA RLY
-                    VISIBLE NL!
+                    I HAS A EMRES ITZ I IZ APPENDOUT YR NL MKAY
                   NO WAI
                     I HAS A TE ITZ 0
                     IM IN YR EMIT
@@ -394,7 +406,7 @@ IM IN YR MACH
                         YA RLY
                           GTFO
                       OIC
-                      VISIBLE RUL'Z T'Z SRS SUM OF TE AN 1!
+                      I HAS A EMRES2 ITZ I IZ APPENDOUT YR RUL'Z T'Z SRS SUM OF TE AN 1 MKAY
                       TE R SUM OF TE AN 1
                     IM OUTTA YR EMIT
                 OIC
@@ -422,8 +434,7 @@ IM IN YR MACH
               WI R SUM OF WI AN 1
               P2 R SUM OF P2 AN 1
             IM OUTTA YR SUF
-            BASE R NB3
-            BLEN R WI
+            I HAS A DONEIT ITZ I IZ SETBASE YR NB3 AN YR WI MKAY
             STEPS R SUM OF STEPS AN 1
             DID R 1
             GTFO
@@ -438,7 +449,7 @@ IM IN YR MACH
   OIC
 IM OUTTA YR MACH
 
-BTW status final
+BTW ---- status final (si no paro por si solo, el presupuesto manda) ----
 BOTH SAEM STAT AN "RUNNING", O RLY?
   YA RLY
     BOTH SAEM STEPS AN MAXS, O RLY?
@@ -449,7 +460,16 @@ BOTH SAEM STAT AN "RUNNING", O RLY?
     OIC
 OIC
 
-BTW ---- frame final ----
+BTW ---- reporte final: output + frame ----
+I HAS A FIN ITZ 0
+IM IN YR DUMP
+  BOTH SAEM FIN AN OUTN, O RLY?
+    YA RLY
+      GTFO
+  OIC
+  VISIBLE OUTB'Z SRS FIN!
+  FIN R SUM OF FIN AN 1
+IM OUTTA YR DUMP
 VISIBLE ""
 VISIBLE "<|JAJAJA|status=" !
 VISIBLE STAT !
