@@ -1,0 +1,119 @@
+{
+  "suite": "Turing-machine fixtures (proofs/tm_to_jajaja) parity",
+  "generator": "proofs/tm_to_jajaja.compile_tm (unchanged, static encoding)",
+  "runtimes": [
+    "jajaja_interpreter.run (oracle)",
+    "src/jajaja.lol via lci"
+  ],
+  "cases": [
+    {
+      "case": 0,
+      "tape_in": "1011",
+      "oracle": {
+        "output": "HALT",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 1,
+      "tape_in": "111",
+      "oracle": {
+        "output": "HALT",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 2,
+      "tape_in": "0",
+      "oracle": {
+        "output": "HALT",
+        "steps": 5,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 5,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 3,
+      "tape_in": "1011",
+      "oracle": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 4,
+      "tape_in": "0000",
+      "oracle": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 5,
+      "tape_in": "1111",
+      "oracle": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "match": true
+    },
+    {
+      "case": 6,
+      "tape_in": "11111",
+      "oracle": {
+        "output": "HALT",
+        "steps": 8,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "HALT",
+        "steps": 8,
+        "status": "HALTED"
+      },
+      "match": true
+    }
+  ],
+  "total": 7,
+  "identical": 7,
+  "mismatches": 0,
+  "parity": true
+}

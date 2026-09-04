@@ -24,6 +24,29 @@ Sin dependencias. Python 3 y nada más.
 
 ---
 
+## Runtime
+
+JAJAJA tiene dos runtimes con la MISMA semántica:
+
+| runtime | ejecutor | papel |
+|---|---|---|
+| `src/jajaja.lol` | un runtime LOLCODE externo (`lci`) | implementación en LOLCODE |
+| `jajaja_interpreter.py` | Python | oráculo de referencia y herramientas |
+
+Para correr sobre LOLCODE (requiere un intérprete `lci` disponible; ver
+`backends/lolcode/README.md`):
+
+```bash
+python tools/run_jajaja_lol.py examples/hola.jaja
+python tools/run_jajaja_lol.py examples/echo.jaja --input "hello"
+```
+
+Paridad demostrada: `python tools/parity_check.py` corre un corpus y compara
+(output, steps, status) entre ambos runtimes. `python tools/turing_parity_lol.py`
+verifica que los fixtures de Turing producidos por `proofs/tm_to_jajaja.py`
+dan el mismo resultado en ambos runtimes. Evidencia en `evidence/lolcode_port/`.
+El rol de Python: ver `docs/PYTHON_ORACLE_AND_LOLCODE.md`.
+
 ## Correr
 
 ```bash

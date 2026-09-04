@@ -1,0 +1,22 @@
+{
+  "package": "JAJAJA port to LOLCODE",
+  "generated": "2026-09-03",
+  "scope": "runtime LOLCODE, launcher, harnesses y resultados de paridad",
+  "files": {
+    "src/jajaja.lol": "ab2099d1a5d50e181163391aa93c3f4e914e83fb8e98a439e19133f85d9b74b5",
+    "tools/run_jajaja_lol.py": "9fe0dedd0ed35bf0ad23dea0c40bf12cf9ef4ae31dc5b866c1305f2f784f96b3",
+    "tools/parity_check.py": "8d4ac159744a82bd8764ad426113e2703ef4305b23949eb49d4abb238c54542c",
+    "tools/turing_parity_lol.py": "1ba7421c79f35da9397f7043993d5bc60520b14ce4c5ae677582f35943326c04",
+    "evidence/lolcode_port/parity.json": "585e2e5d59d5ca9163bf5ac2b1610da75bbcc9cd7c23fbe53b90aa5d44b7def2",
+    "evidence/lolcode_port/turing_parity.json": "d7f5ddfed743df24a2ff498da86d139838f3726325e54f155ad769f2f43d4572"
+  },
+  "external_runtime": {
+    "name": "lci (LOLCODE interpreter)",
+    "source": "https://github.com/justinmeza/lci",
+    "version": "v1.3",
+    "commit": "0b32ed1cc52abd1971d199db9bd77c387316cae1",
+    "license": "GPL-3.0 (separate process; not distributed with this repo)",
+    "binary_sha256": "53200eead0d8fed7bf8d05cf7c124ea1484d5c2025217fae195ebbc1e752dac6"
+  },
+  "note": "Linux/macOS: compilar con gcc desde fuente. Windows: propio binario en C:\\Development\\runtimes (no se commitea)."
+}

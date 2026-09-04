@@ -19,6 +19,26 @@ py ja_encoding.py      → OK
 Total: 100 tests, 0 failures
 ```
 
+Addendum 2026-09-03 (más reciente) — port a LOLCODE como implementación principal:
+
+```
+src/jajaja.lol          implementación de JAJAJA en LOLCODE 1.3 (lci externo)
+tools/run_jajaja_lol.py launcher de transporte (NO semántica)
+tools/parity_check.py   24 casos oracle-Python vs LOLCODE -> 24/24 MATCH
+py tools/parity_check.py              -> exit 0
+py tools/turing_parity_lol.py         -> 7/7 MATCH
+Los fixtures de Turing de proofs/tm_to_jajaja.py corren idéntico en LOLCODE.
+
+Política: Python permanece como oráculo + host + generadores; el runtime
+JAJAJA corre en LOLCODE (ver docs/PYTHON_ORACLE_AND_LOLCODE.md).
+
+Verdicts: docs/LOLCODE_PORT_FEASIBILITY.md + evidence/lolcode_port/VERDICTS.md
+Evidencia: evidence/lolcode_port/parity.json, evidence/lolcode_port/turing_parity.json
+Lingüística (seo es cosa aparte): LOLCODE sigue siendo low-usage en
+Linguist; el cambio de barra linguística NO se falsificó — si GitHub
+actualiza el repo, cualquier cambio refleja código real escrito.
+```
+
 Addendum 2026-09-03 — LOLCODE backend demo:
 
 ```

@@ -1,0 +1,465 @@
+{
+  "suite": "JAJAJA Python-oracle vs LOLCODE-runtime parity",
+  "cases": [
+    {
+      "case": "hola",
+      "file": "examples/hola.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "Hello, world!\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "Hello, world!\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 0.000539,
+      "time_lolcode_s": 0.022
+    },
+    {
+      "case": "amplificacion",
+      "file": "examples/amplificacion.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "jajaja! \n",
+        "steps": 3,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "jajaja! \n",
+        "steps": 3,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 3.5e-05,
+      "time_lolcode_s": 0.009
+    },
+    {
+      "case": "eco",
+      "file": "examples/eco.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "jajaja jajaja\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "jajaja jajaja\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 4.3e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "echo_stdin",
+      "file": "examples/echo.jaja",
+      "stdin": "jajaja?",
+      "max_steps": 200000,
+      "python": {
+        "output": "aaajjj\n",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "aaajjj\n",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 3.4e-05,
+      "time_lolcode_s": 0.011
+    },
+    {
+      "case": "command",
+      "file": "examples/command.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.3e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "stdin_prefix",
+      "file": "examples/echo.jaja",
+      "stdin": "abcde",
+      "max_steps": 200000,
+      "python": {
+        "output": "abcde\n",
+        "steps": 6,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "abcde\n",
+        "steps": 6,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 3e-05,
+      "time_lolcode_s": 0.01
+    },
+    {
+      "case": "busy_beaver",
+      "file": "examples/busy_beaver.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "",
+        "steps": 6,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 6,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 6e-05,
+      "time_lolcode_s": 0.014
+    },
+    {
+      "case": "crlf",
+      "file": "examples/bootstrap_crlf.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "JAJAJA-OK\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "JAJAJA-OK\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.6e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "simple_counter",
+      "file": "examples/simple_counter.jaja",
+      "stdin": "",
+      "max_steps": 20,
+      "python": {
+        "output": "",
+        "steps": 20,
+        "status": "MAX_STEPS"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 20,
+        "status": "MAX_STEPS"
+      },
+      "match": true,
+      "time_python_s": 2.2e-05,
+      "time_lolcode_s": 0.009
+    },
+    {
+      "case": "grow",
+      "file": "examples/grow.jaja",
+      "stdin": "",
+      "max_steps": 20,
+      "python": {
+        "output": "",
+        "steps": 20,
+        "status": "MAX_STEPS"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 20,
+        "status": "MAX_STEPS"
+      },
+      "match": true,
+      "time_python_s": 2.5e-05,
+      "time_lolcode_s": 0.01
+    },
+    {
+      "case": "max_steps_cap",
+      "file": "examples/loop.jaja",
+      "stdin": "",
+      "max_steps": 3,
+      "python": {
+        "output": "",
+        "steps": 3,
+        "status": "MAX_STEPS"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 3,
+        "status": "MAX_STEPS"
+      },
+      "match": true,
+      "time_python_s": 1.5e-05,
+      "time_lolcode_s": 0.01
+    },
+    {
+      "case": "lhs_in_rhs_grows",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 10,
+      "python": {
+        "output": "STOP",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "STOP",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 2e-05,
+      "time_lolcode_s": 0.009
+    },
+    {
+      "case": "self_rewrite_infinite",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 25,
+      "python": {
+        "output": "",
+        "steps": 25,
+        "status": "MAX_STEPS"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 25,
+        "status": "MAX_STEPS"
+      },
+      "match": true,
+      "time_python_s": 2e-05,
+      "time_lolcode_s": 0.009
+    },
+    {
+      "case": "order_first_long",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "X",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "X",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.1e-05,
+      "time_lolcode_s": 0.007
+    },
+    {
+      "case": "order_fallback",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "SI",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "SI",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.2e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "overlap_leftmost",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.2e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "empty_lhs_rule",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "fin",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "fin",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.1e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "nl_only_rhs",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "\n",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "\n",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.7e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "stdin_special_input",
+      "file": "examples/echo.jaja",
+      "stdin": "jajaja!?<>",
+      "max_steps": 200000,
+      "python": {
+        "output": "aaajjj\n",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "aaajjj\n",
+        "steps": 7,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 5.8e-05,
+      "time_lolcode_s": 0.012
+    },
+    {
+      "case": "sep_with_spaces",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "ok",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "ok",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.6e-05,
+      "time_lolcode_s": 0.01
+    },
+    {
+      "case": "comments_between_rules",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "unodos",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "unodos",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.5e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "hash_in_rhs",
+      "file": "(inline)",
+      "stdin": "",
+      "max_steps": 100,
+      "python": {
+        "output": "#valor",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "#valor",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 1.7e-05,
+      "time_lolcode_s": 0.008
+    },
+    {
+      "case": "stdin_empty",
+      "file": "examples/echo.jaja",
+      "stdin": "",
+      "max_steps": 200000,
+      "python": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 3.5e-05,
+      "time_lolcode_s": 0.011
+    },
+    {
+      "case": "stdin_brackets",
+      "file": "examples/echo.jaja",
+      "stdin": "hello <<N>> world",
+      "max_steps": 200000,
+      "python": {
+        "output": "dehllloorw\n\n\n",
+        "steps": 13,
+        "status": "HALTED"
+      },
+      "lolcode": {
+        "output": "dehllloorw\n\n\n",
+        "steps": 13,
+        "status": "HALTED"
+      },
+      "match": true,
+      "time_python_s": 4.6e-05,
+      "time_lolcode_s": 0.017
+    }
+  ],
+  "total": 24,
+  "identical": 24,
+  "mismatches": 0,
+  "parity": true
+}
