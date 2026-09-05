@@ -1,8 +1,8 @@
 {
   ".py": {
-    "files": 27,
-    "bytes": 119228,
-    "lines": 3333
+    "files": 28,
+    "bytes": 121754,
+    "lines": 3408
   },
   ".pyc": {
     "files": 15,
@@ -15,24 +15,34 @@
     "lines": 2692
   },
   ".md": {
-    "files": 16,
-    "bytes": 64084,
-    "lines": 1602
+    "files": 19,
+    "bytes": 77144,
+    "lines": 1938
   },
   ".json": {
-    "files": 4,
-    "bytes": 15838,
-    "lines": 637
+    "files": 7,
+    "bytes": 23536,
+    "lines": 908
+  },
+  ".ps1": {
+    "files": 6,
+    "bytes": 16894,
+    "lines": 470
   },
   ".jaja": {
-    "files": 19,
-    "bytes": 7062,
-    "lines": 305
+    "files": 20,
+    "bytes": 7085,
+    "lines": 309
   },
   ".wiki": {
     "files": 1,
     "bytes": 6218,
     "lines": 114
+  },
+  ".out": {
+    "files": 5,
+    "bytes": 4808,
+    "lines": 44
   },
   ".html": {
     "files": 1,
@@ -40,9 +50,9 @@
     "lines": 85
   },
   ".txt": {
-    "files": 1,
-    "bytes": 3388,
-    "lines": 99
+    "files": 2,
+    "bytes": 3511,
+    "lines": 102
   },
   "": {
     "files": 3,

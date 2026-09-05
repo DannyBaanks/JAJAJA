@@ -1,0 +1,11 @@
+{
+  "tools/build_lol.ps1": "8c350f9d1dcc7ee913518533817e6556b6dfdb6e8bd506bf507296271794ec30",
+  "tools/run_jajaja_lol.ps1": "3ab40bd002fb73c6596ebbe5ffa0e72751435f4e128f6c08b4b7cbb0dd64f28f",
+  "tools/parity_ps_vs_py.ps1": "4549e4804bdb775e03d6608d7addb7451dd6e8a86b1f896930cb8060c011b6c7",
+  "tools/make_snapshots.py": "6295f388e42fa2411e3d669c9d0b232c25ae374ed4089da79f8b2b76bb2860b3",
+  "tests/snapshots.json": "866910f90db73161e2d029d7743ead4d472d0d946ed34f055593f0eeab36b48f",
+  "tests/verify_snapshots.ps1": "dfe09d13e65e0755647cf93410f637b4616f5ead87fe5013fa44ba5535d2bbc0",
+  "tests/zero_python_check.ps1": "4bba77fdb8303d87b8e4d63e7d13ca625bfe89aa53d93b13395d0dab865d2d72",
+  "tests/verify_sin_python.ps1": "fadb393ec0aa48a70096ce3a03ebd5c5a4337c928a6e6cd859525946f8ba019a",
+  "tests/fixtures/inline_echo.jaja": "1c88c38f3ca2442bd7884be6af69f5b74f94cb0cd59e8d57ec83ad8fca00afb2"
+}

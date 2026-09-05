@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "source_responsible": "jajaja_interpreter.run",
+  "frozen_at": "2026-09-04",
+  "cases": [
+    {
+      "name": "amplificacion.jaja",
+      "path": "examples/amplificacion.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "a154b51d3438f9bb801ec9dd290ac5eb0118c8aa9064262f4a015c3c92ff3292",
+      "output": "jajaja! \n",
+      "steps": 3,
+      "status": "HALTED"
+    },
+    {
+      "name": "bootstrap_crlf.jaja",
+      "path": "examples/bootstrap_crlf.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "07fdbee9c3676dda338ae28b8e5cfb35a51a69d6ec13bfad9a234dc412855e57",
+      "output": "JAJAJA-OK\n",
+      "steps": 2,
+      "status": "HALTED"
+    },
+    {
+      "name": "busy_beaver.jaja",
+      "path": "examples/busy_beaver.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 6,
+      "status": "HALTED"
+    },
+    {
+      "name": "calculator.jaja",
+      "path": "examples/calculator.jaja",
+      "stdin": "ADD 1 2",
+      "max_steps": 30,
+      "output_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "output": "3",
+      "steps": 1,
+      "status": "HALTED"
+    },
+    {
+      "name": "chain.jaja",
+      "path": "examples/chain.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "283e91eb85d58ffc2ad922884b644c41b54140660f6d1fda3c403d543eedd839",
+      "output": "DONE",
+      "steps": 4,
+      "status": "HALTED"
+    },
+    {
+      "name": "command.jaja",
+      "path": "examples/command.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 0,
+      "status": "HALTED"
+    },
+    {
+      "name": "echo.jaja",
+      "path": "examples/echo.jaja",
+      "stdin": "hello",
+      "max_steps": 30,
+      "output_sha256": "6f830cb6d43533927b3f7a4dc802b7df86d0679b1e58e34ddfd800fa525669ce",
+      "output": "ehllo\n",
+      "steps": 6,
+      "status": "HALTED"
+    },
+    {
+      "name": "eco.jaja",
+      "path": "examples/eco.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "df45cc29eecc388f664181f8ca3dd595e8528f36cace4559326bcd6535224cc5",
+      "output": "jajaja jajaja\n",
+      "steps": 2,
+      "status": "HALTED"
+    },
+    {
+      "name": "grow.jaja",
+      "path": "examples/grow.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 30,
+      "status": "MAX_STEPS"
+    },
+    {
+      "name": "hola.jaja",
+      "path": "examples/hola.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "d9014c4624844aa5bac314773d6b689ad467fa4e1d1a50a1b8a99d5a95f72ff5",
+      "output": "Hello, world!\n",
+      "steps": 2,
+      "status": "HALTED"
+    },
+    {
+      "name": "hola_mundo.jaja",
+      "path": "examples/hola_mundo.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "8b15c0676e89200f681c822d9439bf98dbb94a9c874258e97a01f15bfbfcc0eb",
+      "output": "¡Hola, mundo!\n",
+      "steps": 2,
+      "status": "HALTED"
+    },
+    {
+      "name": "http_response.jaja",
+      "path": "examples/http_response.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 0,
+      "status": "HALTED"
+    },
+    {
+      "name": "kv_store.jaja",
+      "path": "examples/kv_store.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 0,
+      "status": "HALTED"
+    },
+    {
+      "name": "loop.jaja",
+      "path": "examples/loop.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 30,
+      "status": "MAX_STEPS"
+    },
+    {
+      "name": "mini_webapp.jaja",
+      "path": "examples/mini_webapp.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 0,
+      "status": "HALTED"
+    },
+    {
+      "name": "simple_counter.jaja",
+      "path": "examples/simple_counter.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 30,
+      "status": "MAX_STEPS"
+    },
+    {
+      "name": "structured.jaja",
+      "path": "examples/structured.jaja",
+      "stdin": "",
+      "max_steps": 30,
+      "output_sha256": "7184330a7f77a73b8c6c803ef891a06b0b64a1936e761ce8743aeb705e32cdc9",
+      "output": "COMPUTED",
+      "steps": 3,
+      "status": "HALTED"
+    },
+    {
+      "name": "bootstrap",
+      "path": "bootstrap.jaja",
+      "stdin": "",
+      "max_steps": 5000,
+      "output_sha256": "07fdbee9c3676dda338ae28b8e5cfb35a51a69d6ec13bfad9a234dc412855e57",
+      "output": "JAJAJA-OK\n",
+      "steps": 2,
+      "status": "HALTED"
+    },
+    {
+      "name": "inline_echo",
+      "path": "tests/fixtures/inline_echo.jaja",
+      "stdin": "",
+      "max_steps": 1,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "steps": 0,
+      "status": "HALTED"
+    }
+  ]
+}
