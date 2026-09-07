@@ -41,7 +41,7 @@ Cambios en LOLCODE: +16 archivos, +42,581 bytes (4.3x en bytes, 5x en archivos).
 ## Comandos de verificación
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/parity_check.py --check-only    # 24/24 MATCH
 py tools/turing_parity_lol.py            # 7/7 MATCH
 py tools/compare_tm_compile.py           # 3/3 byte-identical

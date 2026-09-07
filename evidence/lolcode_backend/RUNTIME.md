@@ -18,8 +18,8 @@ gcc -O2 -o lci.exe main.c error.c interpreter.c lexer.c parser.c tokenizer.c uni
 53200EEAD0D8FED7BF8D05CF7C124EA1484D5C2025217FAE195EBBC1E752DAC6  lci.exe
 ```
 
-- Ubicación durante las pruebas: `C:\Development\runtimes\lolcode\lci.exe`
-  (fuera de este repo; `LOLCODE_CMD` lo apuntaba).
+- Ubicación durante las pruebas: fuera de este repo (se accedía vía
+  `LOLCODE_CMD`, que apuntaba al `lci.exe` compilado).
 
 ## Smoke probes (pre-demo)
 

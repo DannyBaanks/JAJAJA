@@ -11,7 +11,7 @@
     "backends/lolcode/programs/count.lol": "0db4144f8381d179a48d700c3198b80440540ee34224892c03920ba4a48d6768",
     "demo_lolcode.py": "090bdeaf495d29d774428d0f12be99733b0573f240eda5917106daf3256c23a1",
     "test_backend_lolcode.py": "10cc66be9666660a1d0d2a6722c20021b2167a613e3e7d10f96c9f48a2e94717",
-    "evidence/lolcode_backend/TRANSCRIPT.txt": "a4ca9844778cfa6e39785f728f59d99fc58ba4c6040ef8c0a9c931a0f874f825"
+    "evidence/lolcode_backend/TRANSCRIPT.txt": "1a547bdf128e626696b6e93dfcef4ecb896e11428ed1b30358d4a65c53e522da"
   },
   "external_runtime": {
     "name": "lci",

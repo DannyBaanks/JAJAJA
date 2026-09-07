@@ -3,7 +3,7 @@
 ## El comando que buscas
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/run_jajaja_lol.py bootstrap.jaja
 ```
 
@@ -21,7 +21,7 @@ corriendo en lci, gana **lci + la suite nativa**.
 ### 1. Ejecutar cualquier .jaja en lci
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/run_jajaja_lol.py <ruta_a_programa.jaja>
 # opcional: py tools/run_jajaja_lol.py <prog.jaja> --input "stdin" --max-steps 500000
 ```
@@ -39,7 +39,7 @@ También puedes no usar env var si `lci.exe` está en PATH.
 ### 2. Paridad de la suite de 24 programas (`src/jajaja.lol` vs oráculo)
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/parity_check.py --check-only
 ```
 
@@ -52,7 +52,7 @@ Debe imprimir:
 ### 3. Paridad Turing (7 fixtures de proofs/tm_to_jajaja.py)
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/turing_parity_lol.py
 ```
 
@@ -66,7 +66,7 @@ Imprime una línea por caso y un resumen final:
 
 ```powershell
 py tools/build_lol.py jajaja_tests.cfg      # ensambla tests/runtime_tests.lol
-C:\Development\runtimes\lolcode\lci.exe tests\runtime_tests.lol
+<ruta-a-lci.exe> tests\runtime_tests.lol
 ```
 
 Resultado:
@@ -80,7 +80,7 @@ FAILURES 0
 ### 5. Wrapper Python de ese test (los llama todos)
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py test_lolcode_native.py
 ```
 
@@ -91,7 +91,7 @@ py test_lolcode_native.py
 ### 6. Compilador TM→JAJAJA (LOLCODE vs Python)
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/compare_tm_compile.py
 ```
 
@@ -102,7 +102,7 @@ py tools/compare_tm_compile.py
 ### 7. Compilador al alfabeto de risas (`ja` puras)
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/compare_ja_compile.py
 ```
 
@@ -113,7 +113,7 @@ py tools/compare_ja_compile.py
 ### 8. Ejecución completa del programa de risas
 
 ```powershell
-$env:LOLCODE_CMD="C:\Development\runtimes\lolcode\lci.exe"
+$env:LOLCODE_CMD="<ruta-a-lci.exe>"
 py tools/compare_ja_run.py
 ```
 
@@ -136,7 +136,7 @@ PASS bit_flip('1011')
 
 - **No grites al terminal sin `$env:LOLCODE_CMD`**: todas las herramientas
   fallan con un `TransportError` que se parece a "no está instalado"; lo está,
-  pero en `C:\Development\runtimes\lolcode\lci.exe` no en PATH.
+  solo que `lci.exe` no está en PATH — apunta la variable a dónde lo tengas.
 - **Sólo Python puedes usar sin env var**: `jajaja_interpreter.run()` es lo
   `run_lol()` fallback a un oráculo; lo hicimos *no silencioso* — `resolve_lci()`
   levanta si no está `lci`.

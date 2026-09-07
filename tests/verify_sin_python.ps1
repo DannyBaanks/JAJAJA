@@ -5,7 +5,11 @@
 $ErrorActionPreference = "Stop"
 
 $repo = Split-Path $PSScriptRoot
-$lci = "C:\Development\runtimes\lolcode\lci.exe"
+$lci = $env:LOLCODE_CMD
+if (-not $lci) {
+    Write-Host "ERROR: define LOLCODE_CMD con la ruta a lci.exe (runtime LOLCODE externo)"
+    exit 2
+}
 
 # Cleanup PATH: filtrar cualquier directorio que mentione "python", "py" launcher o similar
 $limpia = ($env:PATH -split ";" | Where-Object {

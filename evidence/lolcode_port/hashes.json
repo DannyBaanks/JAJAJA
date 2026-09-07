@@ -18,5 +18,5 @@
     "license": "GPL-3.0 (separate process; not distributed with this repo)",
     "binary_sha256": "53200eead0d8fed7bf8d05cf7c124ea1484d5c2025217fae195ebbc1e752dac6"
   },
-  "note": "Linux/macOS: compilar con gcc desde fuente. Windows: propio binario en C:\\Development\\runtimes (no se commitea)."
+  "note": "Linux/macOS: compilar con gcc desde fuente. Windows: binario propio (no se commitea); la ruta se pasa via LOLCODE_CMD."
 }

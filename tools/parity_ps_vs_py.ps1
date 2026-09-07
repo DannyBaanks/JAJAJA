@@ -2,7 +2,10 @@
 # verifica byte-identical. Compara bytes exactos, no consolas.
 $ErrorActionPreference = "Stop"
 
-if (-not $env:LOLCODE_CMD) { $env:LOLCODE_CMD = "C:\Development\runtimes\lolcode\lci.exe" }
+if (-not $env:LOLCODE_CMD) {
+    Write-Host "ERROR: define LOLCODE_CMD con la ruta a lci.exe (runtime LOLCODE externo)"
+    exit 2
+}
 
 $WS = Split-Path $PSScriptRoot
 Set-Location -LiteralPath $WS

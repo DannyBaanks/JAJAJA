@@ -1,6 +1,6 @@
 ﻿=== py demo_lolcode.py "ADD 2 3" ===
 [frontend] python request: "ADD 2 3"
-[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[backend]  runtime: lci.exe (external LOLCODE runtime, path provided via LOLCODE_CMD)
 [jajaja]   rewrite steps=3 status=HALTED
 [jajaja]   EFFECT -> host -> backend (receipt 1)
 [jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
@@ -10,7 +10,7 @@ exit=0
 
 === py demo_lolcode.py "MAX 9 4" ===
 [frontend] python request: "MAX 9 4"
-[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[backend]  runtime: lci.exe (external LOLCODE runtime, path provided via LOLCODE_CMD)
 [jajaja]   rewrite steps=3 status=HALTED
 [jajaja]   EFFECT -> host -> backend (receipt 1)
 [jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
@@ -20,7 +20,7 @@ exit=0
 
 === py demo_lolcode.py "ECHO Bolgang dice hola" ===
 [frontend] python request: "ECHO Bolgang dice hola"
-[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[backend]  runtime: lci.exe (external LOLCODE runtime, path provided via LOLCODE_CMD)
 [jajaja]   rewrite steps=3 status=HALTED
 [jajaja]   EFFECT -> host -> backend (receipt 1)
 [jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
@@ -30,7 +30,7 @@ exit=0
 
 === py demo_lolcode.py "COUNT 3" ===
 [frontend] python request: "COUNT 3"
-[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[backend]  runtime: lci.exe (external LOLCODE runtime, path provided via LOLCODE_CMD)
 [jajaja]   rewrite steps=3 status=HALTED
 [jajaja]   EFFECT -> host -> backend (receipt 1)
 [jajaja]   confirmacion: jajaja:respuesta_recibida_del_backend
@@ -43,7 +43,7 @@ exit=0
 
 === py demo_lolcode.py "DIV 1 2" (negativo: op desconocida) ===
 [frontend] python request: "DIV 1 2"
-[backend]  runtime: C:\Development\runtimes\lolcode\lci.exe (external LOLCODE runtime)
+[backend]  runtime: lci.exe (external LOLCODE runtime, path provided via LOLCODE_CMD)
 [jajaja]   rewrite steps=1 status=HALTED
 [jajaja]   no rule matched the request -> no backend call
 [jajaja]   (ops soportadas: ADD, MAX, ECHO, COUNT)
