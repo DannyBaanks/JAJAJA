@@ -1,0 +1,4 @@
+# c007: tolerancia CRLF (SPEC §1).
+a::=~OK
+::=
+a

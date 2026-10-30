@@ -1,0 +1,7 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\check_bootstrap.py
+exit_code: 0
+--- stdout ---
+Jajaja_COMPILE_OK status=HALTED steps=2 signature='JAJAJA-OK\n'
+
+--- stderr ---
+

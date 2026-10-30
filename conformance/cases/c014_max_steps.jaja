@@ -1,0 +1,5 @@
+# c014: reescritura que crece sin fin -> MAX_STEPS.
+# MAX_STEPS NO es HALTED (SPEC §6): cortar no equivale a terminar.
+ja::=jaja
+::=
+ja

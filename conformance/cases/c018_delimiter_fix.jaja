@@ -1,0 +1,5 @@
+# c018: con delimitador (espacios), la regla del simbolo 2 NO muerde
+# dentro del simbolo 3: " jaja " no es substring de " jajaja ".
+ jaja ::=~MORDIO
+::=
+ jajaja

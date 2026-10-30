@@ -1,0 +1,5 @@
+# c015: la regla emisora borra el match entero; el rhs emisor
+# NO vuelve a la base (SPEC §4; proofs/TURING.md §4).
+ab::=~X
+::=
+zabz

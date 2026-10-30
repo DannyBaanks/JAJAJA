@@ -1,0 +1,4 @@
+# c001: una regla emisora emite texto y borra el match de la base.
+a::=~OK
+::=
+a

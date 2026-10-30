@@ -1,0 +1,4 @@
+# c008: el separador tolera whitespace alrededor (SPEC §2.1.3).
+a::=~OK
+   ::=
+a

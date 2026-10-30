@@ -1,0 +1,16 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\test_engine_does_the_work.py
+exit_code: 0
+--- stdout ---
+OK   1 programa construido: resultado AUSENTE (steps=0, output vacio)
+OK   2 tras engine.run: el resultado APARECE (HELLO)
+OK   3 estado final coherente (HALTED, 1 paso)
+OK   4 mismo artefacto, otro input -> otro resultado (BYE != HELLO)
+OK   5 mismo artefacto (sha256 invariable entre inputs)
+OK   6 rerun: mismo programa + mismo input = mismo resultado
+OK   7 input sin regla: ninguna emision, HALTED limpio (no hay fallback del host)
+OK   8 invariante trace: con/sin traza mismo (output, steps, status)
+OK   9 traza completa: un snapshot por paso mas el inicial
+passed=9 failed=0
+
+--- stderr ---
+

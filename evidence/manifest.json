@@ -1,0 +1,50 @@
+{
+  "manifest": "jajaja-evidence-index/1",
+  "spec_version": "1.0",
+  "updated": "2026-09-05",
+  "packs": [
+    {
+      "id": "golden_v1",
+      "created": "2026-09-05",
+      "scope": "Evidencia canonica del contrato GOLDEN v1.0: tests, proofs, corpus de conformidad (doble pasada identica), bootstrap. Regenerar con: python tools/collect_evidence.py",
+      "status": "CURRENT",
+      "files": ["evidence/golden_v1/manifest.json", "evidence/golden_v1/hashes.json", "evidence/golden_v1/runs/"]
+    },
+    {
+      "id": "general_runtime",
+      "created": "2026-09-01",
+      "scope": "Host runtime (capabilities, ABI EFFECT/RESULT, sandbox fs, UI IR). Extensiones FUERA del nucleo congelado (SPEC §10).",
+      "status": "CURRENT",
+      "files": ["evidence/general_runtime/"]
+    },
+    {
+      "id": "lolcode_port",
+      "created": "2026-09-03",
+      "scope": "Paridad Python-oraculo vs runtime LOLCODE (lci): 24/24 corpus, 7/7 fixtures Turing.",
+      "status": "HISTORICAL_VALID (not rerun on 2026-09-05: lci absent on this host)",
+      "files": ["evidence/lolcode_port/hashes.json", "evidence/lolcode_port/parity.json", "evidence/lolcode_port/turing_parity.json", "evidence/lolcode_port/VERDICTS.md"]
+    },
+    {
+      "id": "lolcode_backend",
+      "created": "2026-09-03",
+      "scope": "Demo de composicion: JAJAJA compone la peticion, LOLCODE ejecuta; incluye auditoria Linguist (low-usage, no 'el menos usado de GitHub').",
+      "status": "CURRENT (e2e requiere lci)",
+      "files": ["evidence/lolcode_backend/"]
+    },
+    {
+      "id": "lolcode_flip",
+      "created": "2026-09-04",
+      "scope": "Cambio de composicion por lenguaje (barra Linguist) medido antes/despues del port.",
+      "status": "CURRENT",
+      "files": ["evidence/lolcode_flip/"]
+    },
+    {
+      "id": "zero_python",
+      "created": "2026-09-04",
+      "scope": "Verificacion de que el runtime LOLCODE no depende de Python en tiempo de ejecucion.",
+      "status": "CURRENT (e2e requiere lci)",
+      "files": ["evidence/zero_python/"]
+    }
+  ],
+  "note": "README explica, runtime ejecuta, evidencia demuestra. Si una afirmacion no aparece respaldada aqui: NOT_DEMONSTRATED."
+}

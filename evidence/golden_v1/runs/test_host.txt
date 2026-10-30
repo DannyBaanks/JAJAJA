@@ -1,0 +1,77 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\test_host.py
+exit_code: 0
+--- stdout ---
+
+=== DATA MODEL ===
+OK   unary 0
+OK   unary 1
+OK   unary 3
+OK   unary roundtrip
+OK   decimal 42
+OK   decimal roundtrip
+OK   list empty
+OK   list encode
+OK   list decode
+OK   record encode
+OK   record decode name
+OK   record decode age
+
+=== HOST ABI ===
+OK   make effect
+OK   parse effect id
+OK   parse effect cap
+OK   parse effect text
+OK   make result
+OK   parse result id
+OK   parse result status
+OK   parse result payload
+OK   expand io
+OK   expand kv
+OK   expand mixed
+
+=== HOST RUNTIME ===
+OK   host echo
+OK   capability deny
+
+=== CALCULATOR ===
+OK   calc ADD 1 2
+OK   calc ADD 3 3
+OK   calc MUL 2 3
+OK   calc ADD 5 5
+OK   calc ADD 0 0
+OK   calc MUL 3 3
+
+=== STRUCTURED OUTPUT ===
+OK   structured output
+OK   chain transform
+
+=== UI IR ===
+OK   UI IR lines count
+OK   UI IR first line
+OK   UI HTML has div
+OK   UI HTML has button
+OK   UI HTML has input
+OK   UI terminal has text
+OK   UI terminal has button
+
+=== FILESYSTEM ===
+OK   fs-write result
+OK   fs-read content
+OK   fs path traversal denied
+
+=== COMPILE_ONCE_TEST_MANY ===
+OK   echo SHA256 stable
+OK   echo 'hello' halts
+OK   echo 'bye' halts
+OK   echo 'abc' halts
+OK   echo 'hi' halts
+OK   echo '' halts
+
+=== TRACE ===
+OK   trace invariant
+OK   trace has entries
+
+passed=51 failed=0
+
+--- stderr ---
+

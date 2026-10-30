@@ -1,0 +1,42 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\test_backend_lolcode.py
+exit_code: 0
+--- stdout ---
+
+=== STATIC ===
+OK   programs dir exists
+OK   program file: sum.lol
+OK   sum.lol opens with HAI
+OK   sum.lol closes KTHXBYE
+OK   program file: max.lol
+OK   max.lol opens with HAI
+OK   max.lol closes KTHXBYE
+OK   program file: echo.lol
+OK   echo.lol opens with HAI
+OK   echo.lol closes KTHXBYE
+OK   program file: count.lol
+OK   count.lol opens with HAI
+OK   count.lol closes KTHXBYE
+OK   adapter has no canned result table
+OK   unknown op refused
+
+=== JAJAJA IN PATH ===
+OK   jajaja rewrote the request
+OK   jajaja halted
+OK   jajaja emitted lolcode effect
+OK   jajaja confirmed receipt
+OK   unknown op: jajaja does NOT emit backend effect
+OK   capability denied outside allowlist
+
+=== NEGATIVE: NO RUNTIME ===
+OK   missing runtime raises
+OK   no-runtime receipt is not OK
+OK   no-runtime payload is not a computed 5
+
+=== END-TO-END (external LOLCODE runtime) ===
+OK   external runtime absent -> e2e impossible (NO PYTHON FALLBACK)
+SKIPPED  e2e sum/max/echo/count  (no lci runtime found)
+
+25 OK, 0 FAILED, 1 SKIPPED
+
+--- stderr ---
+

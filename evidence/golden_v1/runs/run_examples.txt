@@ -1,0 +1,74 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\run_examples.py
+exit_code: 0
+--- stdout ---
+
+=== amplificacion.jaja ===
+status=HALTED steps=3
+output='jajaja! \n'
+
+=== bootstrap_crlf.jaja ===
+status=HALTED steps=2
+output='JAJAJA-OK\n'
+
+=== busy_beaver.jaja ===
+status=HALTED steps=6
+output=''
+
+=== calculator.jaja ===
+status=HALTED steps=0
+output=''
+
+=== chain.jaja ===
+status=HALTED steps=4
+output='DONE'
+
+=== command.jaja ===
+status=HALTED steps=0
+output=''
+
+=== echo.jaja ===
+status=HALTED steps=0
+output=''
+
+=== eco.jaja ===
+status=HALTED steps=2
+output='jajaja jajaja\n'
+
+=== grow.jaja ===
+status=MAX_STEPS steps=1000
+output=''
+
+=== hola.jaja ===
+status=HALTED steps=2
+output='Hello, world!\n'
+
+=== hola_mundo.jaja ===
+status=HALTED steps=2
+output='¡Hola, mundo!\n'
+
+=== http_response.jaja ===
+status=HALTED steps=0
+output=''
+
+=== kv_store.jaja ===
+status=HALTED steps=0
+output=''
+
+=== loop.jaja ===
+status=MAX_STEPS steps=1000
+output=''
+
+=== mini_webapp.jaja ===
+status=HALTED steps=0
+output=''
+
+=== simple_counter.jaja ===
+status=MAX_STEPS steps=1000
+output=''
+
+=== structured.jaja ===
+status=HALTED steps=3
+output='COMPUTED'
+
+--- stderr ---
+

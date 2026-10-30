@@ -1,0 +1,92 @@
+{
+  "pack": "jajaja-golden-evidence/1",
+  "spec_version": "1.0",
+  "collected_utc": "2026-09-06T04:00:30.517830+00:00",
+  "environment": {
+    "python": "3.12.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cwd": "C:\\Development\\ISyCo Git\\JAJAJA"
+  },
+  "runs": [
+    {
+      "name": "check_bootstrap",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "test_jajaja",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "test_host",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "test_engine_does_the_work",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "test_backend_lolcode",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "run_examples",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "proof_tm",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "proof_ja_encoding",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "conformance_corpus",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "conformance_rerun_identical",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "parity_check_lolcode",
+      "exit_code": null,
+      "status": "SKIPPED",
+      "reason": "lci absent"
+    },
+    {
+      "name": "turing_parity_lolcode",
+      "exit_code": null,
+      "status": "SKIPPED",
+      "reason": "lci absent"
+    },
+    {
+      "name": "test_lolcode_native",
+      "exit_code": null,
+      "status": "SKIPPED",
+      "reason": "lci absent"
+    }
+  ],
+  "conformance": {
+    "totals": {
+      "passed": 20,
+      "failed": 0,
+      "total": 20
+    },
+    "verdict": "PASS",
+    "rerun_identical": true
+  },
+  "lolcode_note": "no external LOLCODE runtime (lci not on PATH, LOLCODE_CMD unset): parity/native runs SKIPPED en esta maquina. La evidencia historica 2026-09-03/04 en evidence/lolcode_port y evidence/lolcode_backend sigue siendo valida historicamente.",
+  "missing_artifacts": [],
+  "verdict": "PASS"
+}

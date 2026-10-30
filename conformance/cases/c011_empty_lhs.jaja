@@ -1,0 +1,6 @@
+# c011: una regla con lhs vacio es valida pero INERTE;
+# el motor la salta en cada paso (SPEC §2 propiedades derivadas).
+::=NEVER
+a::=~OK
+::=
+a

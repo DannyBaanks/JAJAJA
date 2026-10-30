@@ -1,0 +1,4 @@
+# c002: rhs "~" a secas emite newline.
+j::=~
+::=
+j

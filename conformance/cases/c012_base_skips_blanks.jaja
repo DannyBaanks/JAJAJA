@@ -1,0 +1,8 @@
+# c012: la base es la primera linea NO vacia y NO comentario
+# tras el separador (SPEC §2.2).
+a::=~OK
+::=
+
+# comentario tras el separador
+
+a

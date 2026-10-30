@@ -1,0 +1,5 @@
+# c009: solo hay comentarios de linea completa.
+# esta linea se ignora; pero un # a mitad de regla es texto:
+a::=~A#B
+::=
+a

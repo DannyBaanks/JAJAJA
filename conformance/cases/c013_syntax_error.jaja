@@ -1,0 +1,4 @@
+# c013: una linea sin ::= en modo reglas es INVALID_PROGRAM.
+esto no es una regla valida
+::=
+x

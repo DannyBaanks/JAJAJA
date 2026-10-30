@@ -1,0 +1,148 @@
+{
+  "corpus": "jajaja-conformance",
+  "spec_version": "1.0",
+  "description": "Corpus de conformidad del nucleo de JAJAJA (SPEC.md). Cada caso prueba una propiedad pequena y explicita: Engine(programa_i) == expected_i.",
+  "cases": [
+    {
+      "id": "c001", "name": "emit",
+      "claim": "rhs '~<texto>' emite <texto> y borra el match de la base",
+      "program": "conformance/cases/c001_emit.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c002", "name": "newline",
+      "claim": "rhs '~' a secas emite '\\n' y borra el match",
+      "program": "conformance/cases/c002_newline.jaja",
+      "stdin_data": "",
+      "expected": {"output": "\n", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c003", "name": "rewrite",
+      "claim": "regla de reescritura pura sustituye el match; si la nueva base no matchea nada -> HALTED",
+      "program": "conformance/cases/c003_rewrite.jaja",
+      "stdin_data": "",
+      "expected": {"output": "", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c004", "name": "first_rule_wins",
+      "claim": "reglas aplicables simultaneas: gana la primera de la lista, no la mas especifica (el orden es semantica)",
+      "program": "conformance/cases/c004_first_rule_wins.jaja",
+      "stdin_data": "",
+      "expected": {"output": "ONEONE", "status": "HALTED", "steps": 2}
+    },
+    {
+      "id": "c005", "name": "leftmost",
+      "claim": "dentro de la regla elegida se reescribe la ocurrencia mas a la izquierda",
+      "program": "conformance/cases/c005_leftmost.jaja",
+      "stdin_data": "",
+      "expected": {"output": "", "status": "HALTED", "steps": 2}
+    },
+    {
+      "id": "c006", "name": "halt",
+      "claim": "ninguna regla matchea -> HALTED con 0 pasos y sin emision",
+      "program": "conformance/cases/c006_halt.jaja",
+      "stdin_data": "",
+      "expected": {"output": "", "status": "HALTED", "steps": 0}
+    },
+    {
+      "id": "c007", "name": "crlf",
+      "claim": "el parser tolera CRLF y LF indistintamente",
+      "program": "conformance/cases/c007_crlf.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c008", "name": "separator_whitespace",
+      "claim": "el separador ::= tolera whitespace alrededor",
+      "program": "conformance/cases/c008_separator_ws.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c009", "name": "inline_hash",
+      "claim": "solo hay comentarios de linea completa: '#' a mitad de regla es texto del rhs",
+      "program": "conformance/cases/c009_inline_hash.jaja",
+      "stdin_data": "",
+      "expected": {"output": "A#B", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c010a", "name": "runtime_input_hello",
+      "claim": "el input se inyecta como prefijo de la base y lo procesan las reglas (COMPILE_ONCE_TEST_MANY)",
+      "program": "conformance/cases/c010_command.jaja",
+      "stdin_data": "hello",
+      "expected": {"output": "HELLO", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c010b", "name": "runtime_input_bye",
+      "claim": "el MISMO archivo produce otro resultado con otro input; el host no interpreta el input",
+      "program": "conformance/cases/c010_command.jaja",
+      "stdin_data": "bye",
+      "expected": {"output": "BYE", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c011", "name": "empty_lhs_inert",
+      "claim": "una regla con lhs vacio es valida pero inerte; el motor la salta",
+      "program": "conformance/cases/c011_empty_lhs.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c012", "name": "base_skips_blanks",
+      "claim": "la base es la primera linea no vacia y no comentario tras el separador",
+      "program": "conformance/cases/c012_base_skips_blanks.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c013", "name": "syntax_error",
+      "claim": "una linea sin '::=' en modo reglas produce SYNTAX_ERROR (INVALID_PROGRAM), no ejecucion",
+      "program": "conformance/cases/c013_syntax_error.jaja",
+      "stdin_data": "",
+      "expected": {"output": "", "status_prefix": "SYNTAX_ERROR", "steps": 0}
+    },
+    {
+      "id": "c014", "name": "max_steps_is_not_halt",
+      "claim": "reescritura divergente agota el presupuesto: MAX_STEPS != HALTED",
+      "program": "conformance/cases/c014_max_steps.jaja",
+      "stdin_data": "",
+      "max_steps": 100,
+      "expected": {"output": "", "status": "MAX_STEPS", "steps": 100}
+    },
+    {
+      "id": "c015", "name": "emit_removes_match",
+      "claim": "la regla emisora borra el match entero; el rhs emisor no vuelve a la base",
+      "program": "conformance/cases/c015_emit_removes_match.jaja",
+      "stdin_data": "",
+      "expected": {"output": "X", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c016", "name": "trailing_lines_ignored",
+      "claim": "las lineas posteriores a la base se descartan en silencio (comportamiento contratado)",
+      "program": "conformance/cases/c016_trailing_lines_ignored.jaja",
+      "stdin_data": "",
+      "expected": {"output": "OK", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c017", "name": "unary_ambiguity_measured",
+      "claim": "sin delimitador la codificacion unaria es ambigua: la regla del simbolo 2 muerde dentro del simbolo 3 (medido, proofs/TURING.md)",
+      "program": "conformance/cases/c017_unary_ambiguity.jaja",
+      "stdin_data": "",
+      "expected": {"output": "MORDIO", "status": "HALTED", "steps": 1}
+    },
+    {
+      "id": "c018", "name": "delimiter_fix",
+      "claim": "con delimitador (espacio) la regla del simbolo 2 NO muerde dentro del simbolo 3",
+      "program": "conformance/cases/c018_delimiter_fix.jaja",
+      "stdin_data": "",
+      "expected": {"output": "", "status": "HALTED", "steps": 0}
+    },
+    {
+      "id": "c019", "name": "bootstrap_signature",
+      "claim": "la firma canonica del lenguaje es JAJAJA-OK seguida de newline, en 2 pasos",
+      "program": "conformance/cases/c019_bootstrap_signature.jaja",
+      "stdin_data": "",
+      "expected": {"output": "JAJAJA-OK\n", "status": "HALTED", "steps": 2}
+    }
+  ]
+}

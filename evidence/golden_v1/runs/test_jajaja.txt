@@ -1,0 +1,57 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\test_jajaja.py
+exit_code: 0
+--- stdout ---
+OK   1 import/startup
+OK   2 hola.jaja output
+OK   3 amplificacion.jaja output
+OK   4 eco.jaja output
+OK   5 bootstrap signature
+OK   6 invalid-input syntax error
+OK   7 loop.jaja MAX_STEPS at 1000
+OK   7b loop.jaja status MAX_STEPS
+OK   8 CRLF bootstrap signature
+OK   9 separador tolerante a whitespace
+OK   10 Thue-completo: tokens arbitrarios
+OK   11 spec §5.1 hola (ejecuta)
+OK   11 spec §5.1 hola (está en la spec)
+OK   12 spec §5.2 amplificacion (ejecuta)
+OK   12 spec §5.2 amplificacion (está en la spec)
+OK   13 spec §5.3 orden correcto (ejecuta)
+OK   13 spec §5.3 orden correcto (está en la spec)
+OK   14 spec §5.3 anti-ejemplo no termina (ejecuta)
+OK   14 spec §5.3 anti-ejemplo no termina (está en la spec)
+OK   15 base salta lineas en blanco
+OK   16 base salta comentarios
+OK   17a notacion ::=~ emite
+OK   17b notacion ::~ es error de sintaxis
+OK   17c la spec ya no documenta ::~
+OK   18 spec §7.1 ambiguedad sin delimitador (ejecuta)
+OK   18 spec §7.1 ambiguedad sin delimitador (está en la spec)
+OK   19 delimitador desambigua
+OK   20a stdin_data injection: no input
+OK   20b stdin_data injection: with input
+OK   21a RUNTIME_INPUT: command hello
+OK   21b RUNTIME_INPUT: command bye
+OK   21c RUNTIME_INPUT: command empty
+OK   22a RUNTIME_INPUT: echo hello
+OK   22b RUNTIME_INPUT: echo bye
+OK   22c RUNTIME_INPUT: echo abc
+OK   22d RUNTIME_INPUT: echo hi
+OK   22e RUNTIME_INPUT: echo empty
+OK   23a COMPILE_ONCE_TEST_MANY: command.jaja SHA256 stable
+OK   23b COMPILE_ONCE_TEST_MANY: echo.jaja SHA256 stable
+OK   23c COMPILE_ONCE_TEST_MANY: 5 unique outputs
+OK   24a RUNTIME_INPUT: base-only input a
+OK   24b RUNTIME_INPUT: base-only input b
+OK   24c RUNTIME_INPUT: base-only input empty
+OK   25a TRACE invariant: output identical
+OK   25b TRACE invariant: trace has entries
+OK   25c TRACE invariant: first snapshot is step 0
+OK   25d TRACE invariant: last snapshot has correct step count
+OK   26 TRACE determinism: same trace for same input
+OK   27 TRACE: different inputs -> different traces
+
+passed=49 failed=0
+
+--- stderr ---
+

@@ -1,0 +1,4 @@
+# c003: reescritura pura; la nueva base no matchea nada -> HALT.
+a::=b
+::=
+a

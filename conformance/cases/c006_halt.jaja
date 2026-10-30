@@ -1,0 +1,4 @@
+# c006: ninguna regla matchea -> HALTED con 0 pasos.
+a::=b
+::=
+zzz

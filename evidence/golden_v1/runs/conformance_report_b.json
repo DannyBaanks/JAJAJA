@@ -1,0 +1,405 @@
+{
+  "report": "jajaja-conformance-report/1",
+  "spec_version": "1.0",
+  "timestamp_utc": "2026-09-06T04:00:31.666205+00:00",
+  "environment": {
+    "python": "3.12.4",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "engine": {
+    "file": "jajaja_interpreter.py",
+    "sha256": "9ec40ff10de0d4d331eb4a8b5698ae30599111cee56c0977c38bd3eef6c61480"
+  },
+  "corpus": {
+    "file": "conformance/cases.json",
+    "sha256": "3cc155b7142cbbe265e292588f8c0d7506a862f01ead9ca0dc71ce07c02a9a2e"
+  },
+  "totals": {
+    "passed": 20,
+    "failed": 0,
+    "total": 20
+  },
+  "verdict": "PASS",
+  "cases": [
+    {
+      "id": "c001",
+      "name": "emit",
+      "claim": "rhs '~<texto>' emite <texto> y borra el match de la base",
+      "program": "conformance/cases/c001_emit.jaja",
+      "program_sha256": "9efe397bfa0512cc4b4d4bb3c529fe8ac9d0f72258a903c34b7bb15e51c79c66",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c002",
+      "name": "newline",
+      "claim": "rhs '~' a secas emite '\\n' y borra el match",
+      "program": "conformance/cases/c002_newline.jaja",
+      "program_sha256": "e7cbf7161ea7f911fdb54131d0d1c8abb6d36fdf50782a18351a3d3ea1b9039d",
+      "observed": {
+        "output": "\n",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "\n",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c003",
+      "name": "rewrite",
+      "claim": "regla de reescritura pura sustituye el match; si la nueva base no matchea nada -> HALTED",
+      "program": "conformance/cases/c003_rewrite.jaja",
+      "program_sha256": "0501b1b05beb3e71424db7ef61f0e077ba4bd5fab947a8d2e8eebc9c522d0934",
+      "observed": {
+        "output": "",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c004",
+      "name": "first_rule_wins",
+      "claim": "reglas aplicables simultaneas: gana la primera de la lista, no la mas especifica (el orden es semantica)",
+      "program": "conformance/cases/c004_first_rule_wins.jaja",
+      "program_sha256": "50e441aedbb7d7e5f9a5d19379ce3734d407108a4631a37039ab9ca62054763c",
+      "observed": {
+        "output": "ONEONE",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "ONEONE",
+        "status": "HALTED",
+        "steps": 2
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c005",
+      "name": "leftmost",
+      "claim": "dentro de la regla elegida se reescribe la ocurrencia mas a la izquierda",
+      "program": "conformance/cases/c005_leftmost.jaja",
+      "program_sha256": "603a247c5aec7ff2f8b15987c1182262def50b4a3276ddae6f3676cce38255eb",
+      "observed": {
+        "output": "",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "",
+        "status": "HALTED",
+        "steps": 2
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c006",
+      "name": "halt",
+      "claim": "ninguna regla matchea -> HALTED con 0 pasos y sin emision",
+      "program": "conformance/cases/c006_halt.jaja",
+      "program_sha256": "635bd13ad414d4443b214dbe071135b019daf5f68ede3f7a53239bfa0ebed4ff",
+      "observed": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "",
+        "status": "HALTED",
+        "steps": 0
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c007",
+      "name": "crlf",
+      "claim": "el parser tolera CRLF y LF indistintamente",
+      "program": "conformance/cases/c007_crlf.jaja",
+      "program_sha256": "05585d4c89c93d41925d055cf76128916108e3339fff093314998032c2368783",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c008",
+      "name": "separator_whitespace",
+      "claim": "el separador ::= tolera whitespace alrededor",
+      "program": "conformance/cases/c008_separator_ws.jaja",
+      "program_sha256": "f0e8237c0c65e53076a07d8f9c82be122db5c241e242a206f0a763f1a413cb9b",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c009",
+      "name": "inline_hash",
+      "claim": "solo hay comentarios de linea completa: '#' a mitad de regla es texto del rhs",
+      "program": "conformance/cases/c009_inline_hash.jaja",
+      "program_sha256": "35d188312ada8e45dd38b764328d493128a383cdd0a6a6bbf7097bc695be5a56",
+      "observed": {
+        "output": "A#B",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "A#B",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c010a",
+      "name": "runtime_input_hello",
+      "claim": "el input se inyecta como prefijo de la base y lo procesan las reglas (COMPILE_ONCE_TEST_MANY)",
+      "program": "conformance/cases/c010_command.jaja",
+      "program_sha256": "f707a2a1ea9f95afb5e122b8496e3a9adc645f6fa3ded8d72c89b7d1dbd3c47a",
+      "observed": {
+        "output": "HELLO",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "HELLO",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c010b",
+      "name": "runtime_input_bye",
+      "claim": "el MISMO archivo produce otro resultado con otro input; el host no interpreta el input",
+      "program": "conformance/cases/c010_command.jaja",
+      "program_sha256": "f707a2a1ea9f95afb5e122b8496e3a9adc645f6fa3ded8d72c89b7d1dbd3c47a",
+      "observed": {
+        "output": "BYE",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "BYE",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c011",
+      "name": "empty_lhs_inert",
+      "claim": "una regla con lhs vacio es valida pero inerte; el motor la salta",
+      "program": "conformance/cases/c011_empty_lhs.jaja",
+      "program_sha256": "372f6846a39ff03d3647dbece910fdcf788a15b50c4a46ac4626fd6e65d9e37d",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c012",
+      "name": "base_skips_blanks",
+      "claim": "la base es la primera linea no vacia y no comentario tras el separador",
+      "program": "conformance/cases/c012_base_skips_blanks.jaja",
+      "program_sha256": "b8d0683355da176453e97dc40890f7e432aadfb95bc5969d9a5dc00f24e71233",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c013",
+      "name": "syntax_error",
+      "claim": "una linea sin '::=' en modo reglas produce SYNTAX_ERROR (INVALID_PROGRAM), no ejecucion",
+      "program": "conformance/cases/c013_syntax_error.jaja",
+      "program_sha256": "9f8f23d768153c89eaaa62b8da929250018c2b0c927978e80ec6de38f5f53222",
+      "observed": {
+        "output": "",
+        "steps": 0,
+        "status": "SYNTAX_ERROR: regla sin '::=' en linea 2: 'esto no es una regla valida'"
+      },
+      "expected": {
+        "output": "",
+        "status_prefix": "SYNTAX_ERROR",
+        "steps": 0
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c014",
+      "name": "max_steps_is_not_halt",
+      "claim": "reescritura divergente agota el presupuesto: MAX_STEPS != HALTED",
+      "program": "conformance/cases/c014_max_steps.jaja",
+      "program_sha256": "c3c7778f053e2431559554b8c90f1ea686dd32378ccb39d546da15e1bafd716e",
+      "observed": {
+        "output": "",
+        "steps": 100,
+        "status": "MAX_STEPS"
+      },
+      "expected": {
+        "output": "",
+        "status": "MAX_STEPS",
+        "steps": 100
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c015",
+      "name": "emit_removes_match",
+      "claim": "la regla emisora borra el match entero; el rhs emisor no vuelve a la base",
+      "program": "conformance/cases/c015_emit_removes_match.jaja",
+      "program_sha256": "b99db68d0b8cf58a55c61bcfe8a605495ce456d32efe1192b7db15032aaa5da2",
+      "observed": {
+        "output": "X",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "X",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c016",
+      "name": "trailing_lines_ignored",
+      "claim": "las lineas posteriores a la base se descartan en silencio (comportamiento contratado)",
+      "program": "conformance/cases/c016_trailing_lines_ignored.jaja",
+      "program_sha256": "5f000ed89dd0ffaf9ced582400a524e6984223f9c6291faef32107b587538cff",
+      "observed": {
+        "output": "OK",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "OK",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c017",
+      "name": "unary_ambiguity_measured",
+      "claim": "sin delimitador la codificacion unaria es ambigua: la regla del simbolo 2 muerde dentro del simbolo 3 (medido, proofs/TURING.md)",
+      "program": "conformance/cases/c017_unary_ambiguity.jaja",
+      "program_sha256": "b21890d90f615b42281f107138a410aeef2ca35c37120081666a70aee8659d2d",
+      "observed": {
+        "output": "MORDIO",
+        "steps": 1,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "MORDIO",
+        "status": "HALTED",
+        "steps": 1
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c018",
+      "name": "delimiter_fix",
+      "claim": "con delimitador (espacio) la regla del simbolo 2 NO muerde dentro del simbolo 3",
+      "program": "conformance/cases/c018_delimiter_fix.jaja",
+      "program_sha256": "c0b5f3895972aaf206232431bb01ee517e9a6df267ff994ce7e98290619d629b",
+      "observed": {
+        "output": "",
+        "steps": 0,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "",
+        "status": "HALTED",
+        "steps": 0
+      },
+      "verdict": "PASS",
+      "failures": []
+    },
+    {
+      "id": "c019",
+      "name": "bootstrap_signature",
+      "claim": "la firma canonica del lenguaje es JAJAJA-OK seguida de newline, en 2 pasos",
+      "program": "conformance/cases/c019_bootstrap_signature.jaja",
+      "program_sha256": "a320c55d6f9d6561765574483e7c7f531b80c1eaa5cfd0ab543be039e29da958",
+      "observed": {
+        "output": "JAJAJA-OK\n",
+        "steps": 2,
+        "status": "HALTED"
+      },
+      "expected": {
+        "output": "JAJAJA-OK\n",
+        "status": "HALTED",
+        "steps": 2
+      },
+      "verdict": "PASS",
+      "failures": []
+    }
+  ]
+}

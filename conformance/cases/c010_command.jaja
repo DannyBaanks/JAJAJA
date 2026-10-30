@@ -1,0 +1,5 @@
+# c010: mismo programa, distintos inputs (COMPILE_ONCE_TEST_MANY).
+# Las reglas procesan el input; el host no lo interpreta.
+hello::=~HELLO
+bye::=~BYE
+::=

@@ -1,0 +1,47 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\proofs\ja_encoding.py
+exit_code: 0
+--- stdout ---
+¿El alfabeto `ja` alcanza para Turing completitud?
+==================================================================
+
+1. SIN delimitador la codificación unaria es ambigua
+------------------------------------------------------------------
+   símbolo 2      = 'jaja'
+   símbolo 3      = 'jajaja'
+   ¿2 es substring de 3?        True
+   símbolo2 + símbolo3          = 'jajajajaja'
+   símbolo 5                    = 'jajajajaja'
+   ¿son la misma cadena?        True
+
+   programa: regla sobre el símbolo 2, base = sólo el símbolo 3
+   resultado: output='MORDIO' steps=1 status=HALTED
+   -> la regla del símbolo 2 se disparó dentro del 3: True
+
+   CON delimitador:
+   ¿' jaja ' es substring de ' jajaja '?  False
+
+   OK: el delimitador es el que sostiene la codificación
+
+
+2. Una máquina de Turing corriendo en risas puras
+------------------------------------------------------------------
+
+   OK   binary_increment('1011')
+        esperado : '1100'
+        en risas : '1100'  (9 pasos, HALTED, output='')
+        el resultado vive en la cinta, no en el output (ver compile_tm_ja)
+        alfabeto de reglas y cinta: ['a', 'j']
+        (sólo 'j' y 'a' -> risa pura)
+
+   OK   bit_flip('1011')
+        esperado : '0100'
+        en risas : '0100'  (6 pasos, HALTED, output='')
+        el resultado vive en la cinta, no en el output (ver compile_tm_ja)
+
+==================================================================
+VEREDICTO: el alfabeto `ja` es Turing completo CON delimitador.
+           Sin delimitador la codificación unaria es ambigua y
+           las reglas se muerden entre sí.
+
+--- stderr ---
+

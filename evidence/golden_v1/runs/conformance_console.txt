@@ -1,0 +1,26 @@
+--- run A (cola) ---
+ empty_lhs_inert
+PASS c012  base_skips_blanks
+PASS c013  syntax_error
+PASS c014  max_steps_is_not_halt
+PASS c015  emit_removes_match
+PASS c016  trailing_lines_ignored
+PASS c017  unary_ambiguity_measured
+PASS c018  delimiter_fix
+PASS c019  bootstrap_signature
+conformance: 20 passed, 0 failed, 20 total
+report written: C:\Development\ISyCo Git\JAJAJA\evidence\golden_v1\runs\conformance_report_a.json
+
+--- run B (cola) ---
+ empty_lhs_inert
+PASS c012  base_skips_blanks
+PASS c013  syntax_error
+PASS c014  max_steps_is_not_halt
+PASS c015  emit_removes_match
+PASS c016  trailing_lines_ignored
+PASS c017  unary_ambiguity_measured
+PASS c018  delimiter_fix
+PASS c019  bootstrap_signature
+conformance: 20 passed, 0 failed, 20 total
+report written: C:\Development\ISyCo Git\JAJAJA\evidence\golden_v1\runs\conformance_report_b.json
+

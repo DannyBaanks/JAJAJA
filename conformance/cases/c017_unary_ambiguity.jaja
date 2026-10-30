@@ -1,0 +1,6 @@
+# c017: sin delimitador la codificacion unaria es AMBIGUA:
+# la regla del simbolo 2 (jaja) muerde dentro del simbolo 3 (jajaja).
+# Caso medido en proofs/TURING.md §3. Es comportamiento contratado.
+jaja::=~MORDIO
+::=
+jajaja

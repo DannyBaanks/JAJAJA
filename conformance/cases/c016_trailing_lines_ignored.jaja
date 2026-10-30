@@ -1,0 +1,6 @@
+# c016: las lineas posteriores a la base se descartan en silencio
+# (comportamiento contratado, SPEC §2.2).
+a::=~OK
+::=
+a
+ESTA LINEA SE DESCARTA EN SILENCIO

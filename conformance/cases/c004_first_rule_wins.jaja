@@ -1,0 +1,6 @@
+# c004: dos reglas aplicables; gana la PRIMERA de la lista,
+# aunque la segunda sea mas especifica. El orden de reglas es semantica.
+a::=~ONE
+aa::=~TWO
+::=
+aa

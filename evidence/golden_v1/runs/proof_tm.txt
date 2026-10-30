@@ -1,0 +1,39 @@
+command: C:\Users\progr\AppData\Local\Programs\Python\Python312\python.exe C:\Development\ISyCo Git\JAJAJA\proofs\tm_to_jajaja.py
+exit_code: 0
+--- stdout ---
+Traducción mecánica MT -> JAJAJA, verificada contra un simulador
+====================================================================
+
+OK    binary_increment('1011')
+        MT de referencia : '1100'  (8 pasos, estado done)
+        JAJAJA compilado : '1100'  (10 pasos, HALTED, output='HALT')
+
+OK    binary_increment('111')
+        MT de referencia : '1000'  (8 pasos, estado done)
+        JAJAJA compilado : '1000'  (10 pasos, HALTED, output='HALT')
+
+OK    binary_increment('0')
+        MT de referencia : '1'  (3 pasos, estado done)
+        JAJAJA compilado : '1'  (5 pasos, HALTED, output='HALT')
+
+OK    bit_flip('1011')
+        MT de referencia : '0100'  (5 pasos, estado done)
+        JAJAJA compilado : '0100'  (7 pasos, HALTED, output='HALT')
+
+OK    bit_flip('0000')
+        MT de referencia : '1111'  (5 pasos, estado done)
+        JAJAJA compilado : '1111'  (7 pasos, HALTED, output='HALT')
+
+OK    parity('1111')
+        MT de referencia : '1111P'  (5 pasos, estado done)
+        JAJAJA compilado : '1111P'  (7 pasos, HALTED, output='HALT')
+
+OK    parity('11111')
+        MT de referencia : '11111I'  (6 pasos, estado done)
+        JAJAJA compilado : '11111I'  (8 pasos, HALTED, output='HALT')
+
+====================================================================
+casos=7 fallos=0
+
+--- stderr ---
+

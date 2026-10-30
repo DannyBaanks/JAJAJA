@@ -1,0 +1,5 @@
+# c005: dentro de la regla elegida se reescribe la ocurrencia
+# MAS A LA IZQUIERDA (base pasa por aa -> ba -> bb).
+a::=b
+::=
+aa
