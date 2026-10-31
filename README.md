@@ -340,7 +340,8 @@ la lógica de aplicación.
 
 El commit `bd0f9b7` versiona el material que estaba sin control de versiones y que
 sostiene la sección anterior: `SPEC.md`, `GOLDEN.md`, `CHANGELOG.md`,
-`conformance/` (19 casos en `conformance/cases/` + `cases.json`),
+`conformance/` (20 casos declarados en `cases.json`; 19 archivos `.jaja`, con
+`c010` partido en `c010a`/`c010b`),
 `tools/conformance_run.py`, `tools/collect_evidence.py`,
 `evidence/golden_v1/` (manifest, hashes y corridas en `runs/`) y
 `test_engine_does_the_work.py`.

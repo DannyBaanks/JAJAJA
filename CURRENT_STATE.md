@@ -131,3 +131,26 @@ LOLCODE se cuadruplicó en bytes respecto a 2026-09-03.
 
 Python queda como oráculo y tooling; la especificación del runtime ya no
 depende del intérprete Python.
+
+Addendum 2026-09-05 — el NÚCLEO pasa a contrato GOLDEN v1.0:
+
+```
+SPEC.md v1.0 FROZEN        formato .jaja, semantica del paso, estados, limites, traza
+GOLDEN.md                  declaracion GOLDEN con las 7 condiciones §1.6 de la norma
+CHANGELOG.md               1.0.0 - primer contrato congelado
+conformance/               corpus declarativo: 20 casos, un claim por caso
+tools/conformance_run.py   runner del corpus -> exit 0 (20/20 hoy)
+test_engine_does_the_work.py  prueba adversarial §9 (9/9): resultado ausente
+                              antes de run, aparece despues; mismo artefacto,
+                              inputs distintos; sin fallback del host
+evidence/golden_v1/        regenerable: python tools/collect_evidence.py
+                           (corpus corrido DOS veces, veredictos byte-identicos)
+evidence/manifest.json     indice de packs de evidencia (incluye historicos)
+
+Estado: núcleo GOLDEN v1.0. Host capabilities / UI IR / stdlib / LOLCODE:
+extensiones FUERA del congelado, con su propio estado (SPEC §10).
+
+LOLCODE hoy (2026-09-05): lci no instalado en este host -> pasos de paridad del
+colector reportan SKIPPED (nunca PASS simulado). La evidencia 2026-09-03/04
+se conserva como historica valida.
+```
