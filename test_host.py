@@ -195,4 +195,5 @@ check("trace has entries", len(j2.trace) > 0, True)
 
 print()
 print("passed=%d failed=%d" % (passed, failed))
-sys.exit(0 if failed == 0 else 1)
+if __name__ == "__main__":
+    sys.exit(0 if failed == 0 else 1)

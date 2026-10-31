@@ -128,5 +128,8 @@ else:
     check("compiled echo", out.strip(), "emit me")
 
 
-print(f"\n{passed} OK, {failed} FAILED, {skipped} SKIPPED")
-sys.exit(1 if failed else 0)
+# El resumen y la salida solo al ejecutarlo como script: bajo pytest (que importa
+# el modulo para coleccionarlo) el sys.exit de nivel modulo producia INTERNALERROR.
+if __name__ == "__main__":
+    print(f"\n{passed} OK, {failed} FAILED, {skipped} SKIPPED")
+    sys.exit(1 if failed else 0)
