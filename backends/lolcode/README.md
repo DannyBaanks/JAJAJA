@@ -47,10 +47,21 @@ $env:LOLCODE_CMD="C:\ruta\a\lci.exe"   # PowerShell
 
 O simplemente deja `lci` en tu `PATH`.
 
-Verificado el 2026-10-31 en Ubuntu 24.04 con `lci v0.11.2` (master `a0a3767`,
-compilado con `cmake`/`make`): los e2e corren contra ese runtime sin SKIP —
-`test_backend_lolcode.py` 30 OK, `test_lolcode_emit.py` 22 OK,
-`test_lolcode_native.py` 4 OK.
+Verificado el 2026-10-31 en Ubuntu 24.04 con las dos fuentes, y las dos sin SKIP:
+
+| runtime | binario | e2e |
+|---|---|---|
+| `v1.3` (la referencia de arriba, se reporta `v0.10.5`) | `~/.local/bin/lci` | 30 + 22 + 4 OK, 0 SKIP |
+| `master` `a0a3767` (se reporta `v0.11.2`) | `~/.local/bin/lci-v0.11.2-master` | 30 + 22 + 4 OK, 0 SKIP |
+
+`v1.3` pide CMake 3.31 y este host trae 3.28.3, así que el build se hace con
+
+```bash
+sh tools/build_lci.sh            # v1.3  (rebaja cmake_minimum_required en su copia local)
+sh tools/build_lci.sh --master   # master
+```
+
+que instala en `~/.local/bin/lci` sin sudo y termina con un smoke (`HAI 1.2`).
 
 ## Ops
 
