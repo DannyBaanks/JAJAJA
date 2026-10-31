@@ -24,6 +24,49 @@ Sin dependencias. Python 3 y nada más.
 
 ---
 
+## Estado del contrato: núcleo GOLDEN v1.0
+
+El **núcleo** del lenguaje (formato `.jaja`, paso de reescritura, estados
+`HALTED`/`MAX_STEPS`/`SYNTAX_ERROR`, input, traza) tiene su semántica
+**congelada**: [`SPEC.md`](SPEC.md) v1.0 + [`GOLDEN.md`](GOLDEN.md). El
+contrato se verifica con un corpus declarativo:
+
+```bash
+python tools/conformance_run.py      # corpus 20/20 (un claim por caso)
+python tools/collect_evidence.py     # regenera evidence/golden_v1/
+```
+
+### Tabla de claims (núcleo)
+
+| Claim | Status | Evidencia |
+|---|---|---|
+| Parser acepta el formato canónico (.jaja, CRLF, comentarios) | VERIFIED | corpus c007-c012 + `test_jajaja.py` |
+| Paso de reescritura (orden de reglas, leftmost, `~` emite y borra) | GOLDEN | SPEC §4 + corpus c001-c005/c015 |
+| `HALTED`, `MAX_STEPS` y `SYNTAX_ERROR` son estados distintos | GOLDEN | SPEC §6 + corpus c006/c013/c014 |
+| Runtime input: mismo artefacto, distintos inputs, distintos resultados | GOLDEN | corpus c010a/b + `test_engine_does_the_work.py` |
+| El host NO hace el trabajo del lenguaje | VERIFIED | `test_engine_does_the_work.py` (§9) |
+| Traza observable sin alterar la ejecución | GOLDEN | SPEC §8 + test de invariante trace |
+| Motor Turing completo (algoritmo de Markov) | VERIFIED | `proofs/tm_to_jajaja.py` + segundo runtime |
+| Alfabeto de risas TC **con delimitador** | VERIFIED | `proofs/ja_encoding.py` + corpus c017/c018 |
+| Paridad Python-oráculo vs runtime LOLCODE | VERIFIED (histórico) | `evidence/lolcode_port/` (24/24, 7/7; rerun hoy: `lci` ausente en este host) |
+
+### NO demostrado
+
+| Claim | Status | Razón |
+|---|---|---|
+| Persistencia real (KV duradero) | NOT_DEMONSTRATED | KV del host es solo in-memory |
+| Concurrencia | NOT_DEMONSTRATED | motor single-threaded |
+| Código nativo (JIT/AOT) | NOT_DEMONSTRATED | no existe |
+| "LOLCODE es el lenguaje menos usado de GitHub" | NOT_DEMONSTRATED | medido: Befunge tiene menos archivos indexados (`evidence/lolcode_backend/LINGUIST_AUDIT.md`) |
+
+### Límites conocidos
+
+`max_steps` por defecto 200 000 (configurable); sin timeout de wall-clock en el
+motor; memoria sin cota en el motor (acotada por el host). Detalle y tabla en
+`SPEC.md` §7. `MAX_STEPS` nunca se reporta como `HALTED`.
+
+---
+
 ## Runtime
 
 JAJAJA tiene dos runtimes con la MISMA semántica:
@@ -91,7 +134,8 @@ for snapshot in j.trace:
 
 ## El lenguaje
 
-Especificación completa en **[JAJAJA_LANG.md](JAJAJA_LANG.md)**. Lo mínimo:
+Contrato formal congelado en **[SPEC.md](SPEC.md)** (gana en caso de
+conflicto); narrativa y diseño en **[JAJAJA_LANG.md](JAJAJA_LANG.md)**. Lo mínimo:
 
 | | |
 |---|---|
@@ -255,12 +299,14 @@ Firma de honestidad del diseño:
 
 ## Tests
 
-130 tests, sin framework:
+159 comprobaciones, sin framework:
 
 ```bash
-python test_jajaja.py            # 49 tests: intérprete + examples + runtime input + trace
-python test_host.py              # 51 tests: data model + host ABI + calculator + UI IR + FS
-python test_backend_lolcode.py   # 30 tests: backend LOLCODE (e2e requiere runtime externo; sin él se omite el e2e y se prueba el fallo limpio)
+python test_jajaja.py                # 49 tests: intérprete + examples + runtime input + trace
+python test_host.py                  # 51 tests: data model + host ABI + calculator + UI IR + FS
+python test_backend_lolcode.py       # 30 tests: backend LOLCODE (e2e requiere runtime externo; sin él se omite el e2e y se prueba el fallo limpio)
+python test_engine_does_the_work.py  # 9 checks adversariales: el host no roba el trabajo del lenguaje
+python tools/conformance_run.py      # 20 casos del corpus de conformidad (un claim por caso)
 ```
 
 Cubren el intérprete, los ejemplos, CRLF, tolerancia del separador, runtime
@@ -289,6 +335,16 @@ JAJAJA continues computing
 
 JAJAJA decide **qué** effects requestear. host.py los ejecuta. Python no calcula
 la lógica de aplicación.
+
+## Archivos añadidos al repositorio (2026-10-31)
+
+El commit `bd0f9b7` versiona el material que estaba sin control de versiones y que
+sostiene la sección anterior: `SPEC.md`, `GOLDEN.md`, `CHANGELOG.md`,
+`conformance/` (19 casos en `conformance/cases/` + `cases.json`),
+`tools/conformance_run.py`, `tools/collect_evidence.py`,
+`evidence/golden_v1/` (manifest, hashes y corridas en `runs/`) y
+`test_engine_does_the_work.py`.
+
 
 ## Licencia
 
